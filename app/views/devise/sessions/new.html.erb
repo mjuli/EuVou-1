@@ -1,17 +1,18 @@
 <h2>Fazer login</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= f.input :email, required: false, autofocus: true, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.input :password, required: false, class: 'form-control' %>
-  </div>
-  <div class="form-group col-md-12">
-    <%= f.input :remember_me, as: :boolean, inline_label: true, label: "Lembrar" %>
-  </div>
+    <div class="form-group">
+      <%= f.input :email, required: false, autofocus: true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.input :password, required: false, class: 'form-control' %>
+    </div>
+    <div class="form-group col-md-12">
+      <%= f.input :remember_me, as: :boolean, inline_label: true, label: "Lembrar" %>
+    </div>
 
-<%= f.button :submit, "Entrar", class: 'btn btn-default', style: 'width: 200px; padding: 0 !important;' %>
+    <%= f.button :submit, "Entrar", class: 'btn btn-default', style: 'width: 200px; padding: 0 !important;' %>
 <% end %><br>
 
 <%= render "devise/shared/links" %>
+

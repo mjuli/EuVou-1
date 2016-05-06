@@ -1,15 +1,13 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { multipart: true, method: :put }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-group">
-   	<%= f.label :name, 'Nome' %>
-		<%= f.input :name, required: true, autofocus: true, class: 'form-control', label: false %>
+    <%= f.input :name, required: true, autofocus: true, label: 'Nome', class: 'form-control' %>
   </div>
   <div class="form-group">
-   	<%= f.label :email, 'Email' %>
-		<%= f.input :email, required: true, class: 'form-control', disabled: true, label: false %>
+    <%= f.input :email, required: true, class: 'form-control', label: 'Email' %>
   </div>
   <div class="form-group">
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -18,34 +16,26 @@
   </div>
 
   <div class="form-group">
-		<%= f.label :password, 'Nova senha' %>
-		<%= f.input :password, autocomplete: "off", required: false, class: 'form-control', label: false, placeholder: "Deixe em branco se não quiser alterar" %>
+    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, class: 'form-control', label: 'Senha' %>
   </div>
   <div class="form-group">
-   	<%= f.label :password_confirmation, 'Confirmar nova senha' %>
-    <%= f.input :password_confirmation, required: false, class: 'form-control', label: false %>
+    <%= f.input :password_confirmation, required: false, class: 'form-control', label: 'Confirmar senha' %>
   </div>
   <div class="form-group">
-		<%= f.label :current_password, 'Senha atual' %>
-		<%= f.input :current_password, placeholder: "Mudanças só poderão ser efetuadas com a senha atual", required: true, class: 'form-control', label: false %>
+    <%= f.input :current_password, hint: "Mudanças só poderaão ser efetuadas com a senha atual", required: true, class: 'form-control' %>
   </div>
+
   <div class="form-group">
-		<% if current_user.image.url.present? %>
-			<%= image_tag current_user.image.url(:form_preview) %>
-		<% end %><br>
-		<%= f.label :image, 'Alterar imagem'  do %>
-			<%= f.file_field :image, class: 'form-control', label: false %>
-			<%= f.hidden_field :image_cache %>
-		<% end %>
+    <%= f.file_field :image, label: "Adicionar Imagem", accept: "image/jpeg, image/jpg, image/gif, image/png" %>
   </div>
   
-  <%= f.button :submit, "Atualizar",  class: "btn btn-default", style: 'width: 200px; padding: 0 !important;' %>
-<% end %><br>
+  <%= f.button :submit, "Update", class: 'btn btn-default' %>
+<% end %>
 
 <hr>
 
-<h3>Encerrar conta</h3>
+<h3>Cancel my account</h3>
 
-<p>Insatisfeito? <%= link_to "Excluir conta", registration_path(resource_name), data: { confirm: "Tem certeza disto?", method: :delete }%></p>
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", method: :delete} %></p>
 
-<%= link_to "Voltar", events_path, class: "btn btn-default" %>
+<%= link_to "Back", :back, class: "btn btn-default" %>

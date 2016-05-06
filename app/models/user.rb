@@ -9,9 +9,7 @@ class User < ActiveRecord::Base
   has_many :identities, dependent: :destroy
 
   has_many :events
-	has_many :comments
-	has_many :eu_vous, foreign_key: :attendee_id
-	has_many :attended_events, through: :eu_vous
+  has_many :comments
   
   after_create :set_default_role, if: Proc.new { User.count > 1 }
   mount_uploader :image, ImageUploader
@@ -50,21 +48,12 @@ class User < ActiveRecord::Base
           name: auth.info.name || auth.extra.nickname ||  auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20],
-					image: auth.info.image,
+          image: auth.info.image,
         )
         user.skip_confirmation!
         user.save!
       end
     end
-		
-		def largeimage
-			"http://graph.facebook.com/#{self.uid}/picture?type=large"
-		end
-	 
-		def normalimage
-			"http://graph.facebook.com/#{self.uid}/picture?type=normal"
-		end
-
 
     # Associate the identity with the user if needed
     if identity.user != user
@@ -77,32 +66,7 @@ class User < ActiveRecord::Base
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
-	
-	# Event methods
-	
-  def upcoming_events
-    self.attended_events.upcoming
-  end
 
-  def previous_events
-    self.attended_events.past
-  end
-
-  def attending?(event)
-    event.attendees.include?(self)
-  end
-
-  def attend!(event)
-		self.eu_vous.create!(attended_event_id: event.id)
-  end
-
-  def cancel!(event)
-		self.eu_vous.find_by(attended_event_id: event.id).destroy
-  end
-
-	
-	
-	
   private
 
   def set_default_role

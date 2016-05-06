@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Category.delete_all
-categories = ['dança', 'música', 'lazer', 'cultura', 'educação', 'teatro', 'cinema', 'festas', 'baladas', 'privado', 'aniversários', 'comemorações', 'congressos', 'cerimônias', 'recepções', 'convenções', 'casamentos', 'formaturas']
+categories = ['dança', 'música', 'lazer', 'cultura', 'educação', 'teatro', 'cinema', 'festas', 'baladas', 'privado', 'aniversários', 'comemorações', 'congressos', 'cerimônias', 'recepções', 'convenções']
 
 categories.each do |name|
   Category.create!(name: name)

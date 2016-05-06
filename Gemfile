@@ -62,7 +62,6 @@ gem "font-awesome-rails" #https://github.com/bokmann/font-awesome-rails
 # images
 gem 'rmagick'
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
-gem 'cloudinary'
 
 #customizing urls
 gem 'friendly_id', '~> 5.1.0'

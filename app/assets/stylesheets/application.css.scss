@@ -5,10 +5,12 @@
 @import "bootstrap";
 @import "bootswatch/united/bootswatch";
 
+
 @import "style";
 @import "nav";
 @import "events";
-@import "bootstrap-custom";
+@import "forms";
+@import "card_events";
 @import "social-share-button";
 
 // Mixins
@@ -40,7 +42,7 @@
 @import "materialize/components/collapsible";
 @import "materialize/components/chips";
 @import "materialize/components/materialbox";
-@import "materialize/components/forms/forms";
+@import "materialize/components/form";
 @import "materialize/components/table_of_contents";
 @import "materialize/components/sideNav";
 @import "materialize/components/preloader";

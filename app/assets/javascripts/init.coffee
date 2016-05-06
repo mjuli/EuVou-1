@@ -5,12 +5,7 @@ App.init = ->
 # Initialize collapse button
   $('.button-collapse').sideNav()
 
-
-$(document).ready ->
   $('ul.tabs').tabs()
-  return
-
-
 
 
   #script facebook
@@ -35,3 +30,4 @@ $(document).ready ->
 
 $(document).on "page:change", ->
   App.init()
+

@@ -19,5 +19,4 @@
 // require_tree
 //= require materialize-sprockets
 //= require init
-//= require events
 
