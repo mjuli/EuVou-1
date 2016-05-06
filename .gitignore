@@ -15,10 +15,10 @@
 /log/*
 !/log/.keep
 log/
-tmp/*.cache
-tmp/
-/tmp
-/tmp/*
+#tmp/*.cache
+#tmp/
+#/tmp
+#/tmp/*
 
 .DS_Store
 db/.DS_Store
