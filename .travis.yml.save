@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+- 2.0.0
+- 1.9.3
+- jruby-19mode
+- rbx-2
+deploy:
+  provider: heroku
+  api_key: 4820d7d3-06f3-4dc6-9151-011a7a801fd    secure: TgXtZZM1j85SvH3zvncGF0B7HE3PiRXBMuiSGYkUJlI8YxA1USvhUsfA+MMwJg24LUZEagjuAyv9SzmjC0vM/8Lh1wKawQ71Yg+dJxlcwhJabW4fzeEnwi4U9NDxEBMQ+H/NWf4dRTgdjyF4xmHiPMNA5uAAtYJLWxBRbSNnKEGOV6Mw0XviJ42b5A57aJ1joftDVLYa+JdevhH+aXUyGFefgEMuv6SNxgqBS/oZi1gV5P6f1ATsAP0hDf5wGAz+b6l9suoTZhK/3ogQMr89cjxS1uaS4DaG9tmZWWApimUeI/w6eakjOzzM/qhXcSGI6OzdjHzy2BYmvUrYE5WrjlPtKI4dzyA3T61YAbgt8ISWzIaW0/+AlQ09wswUkp0Z90jhlfgFpDs3a42PINeigChH2lOQy92+o2VplLCo651O6ISAeID6LG79Dh52LOMKrFnZK9HFCJqtdv/SGHBMp+I6koea0QMrMDcihJEEJOHzST9CxBVdPQxE2jNvwNmUtOLzLh8ftwKxb2XhpWbdZ6MGGgfa1/DCnUcelwIcvIO3HmaoLP2+oWIe84Jn5gpohmhAc930hK+lEoNMmhP38dpnxt0t2k2GbIBF2yjuNQaV3bhzfJ/89xnotV5yGne8h0Jwr02EoFAnbux199dxhd1akp7w3Bf0nfzsapkSNMg=
+  app: EuVou
+  on:
+    repo: LuanGB/EuVou
