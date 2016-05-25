@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227215947) do
+ActiveRecord::Schema.define(version: 20160524142723) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "location"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160227215947) do
     t.integer  "user_id"
     t.integer  "category_id"
     t.string   "location"
+    t.boolean  "state"
   end
 
   add_index "events", ["category_id"], name: "index_events_on_category_id"
