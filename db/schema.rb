@@ -54,19 +54,12 @@ ActiveRecord::Schema.define(version: 20160524142723) do
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "date"
+    t.string   "image"
+    t.date     "date"
+    t.time     "time"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.text     "images"
-    t.string   "street"
-    t.string   "number"
-    t.string   "district"
-    t.string   "zip_code"
-    t.string   "city"
-    t.string   "estate"
-    t.string   "country"
-    t.string   "local"
     t.integer  "category_id"
     t.string   "location"
     t.boolean  "state"
@@ -116,7 +109,6 @@ ActiveRecord::Schema.define(version: 20160524142723) do
     t.string   "slug"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.text     "images"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
