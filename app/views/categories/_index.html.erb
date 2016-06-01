@@ -3,7 +3,7 @@
     <div class="col s12 m4 category">
       <div class="card-panel teal">
             <span class="white-text">
-              <%= link_to category.name, events_path(params[category_search: category.name]) %>
+              <%= link_to category.name, "/events/category/" + category.id.to_s %>
                 <div class="chip">
                   <%= category.events.count %>
                 </div>

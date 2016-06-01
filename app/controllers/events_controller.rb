@@ -8,7 +8,11 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
 		@events = Event.search(params[:search]).order(date: :asc).where('date >= ?', Date.today)
-    #@events = Event.search(params[:search]).order(date: :asc)
+    
+    if(params[:category_id])
+      @events = @events.where('category_id = ?', params[:category_id])
+    end
+    
     @categories = Category.order(name: :asc)
 
     respond_to do |format|
