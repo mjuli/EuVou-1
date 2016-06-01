@@ -2,14 +2,17 @@ Rails.application.routes.draw do
 
   root 'events#index'
   
+  get '/events/category/:category_id' => 'events#index' 
+
   resources :events do
-    resources :comments, only: [:create, :destroy]
+  	resources :comments, only: [:create, :destroy]
   end
+  
   resources :categories
   
-	match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-	match '/profile/:id' => 'users#user_show', via: [:get, :patch], :as => :user_show
+  match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  match '/profile/:id' => 'users#user_show', via: [:get, :patch], :as => :user_show
 
-	devise_for :users, :controllers => { registration: 'registration', omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, :controllers => { registration: 'registration', omniauth_callbacks: 'omniauth_callbacks' }
 
 end

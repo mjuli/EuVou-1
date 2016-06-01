@@ -22,3 +22,6 @@ tmp/
 
 .DS_Store
 db/.DS_Store
+
+.travis.yml
+.travis.yml.save
