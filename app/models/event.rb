@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   
   accepts_nested_attributes_for :address, allow_destroy: true
 
-	validates_presence_of :category
+	validates_presence_of :category, :title
   
   def self.search(search)
     if search

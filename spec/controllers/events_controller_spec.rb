@@ -20,82 +20,95 @@ require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
 
+  let(:category) { FactoryGirl.create(:category) }
+
   # This should return the minimal set of attributes required to create a valid
   # Event. As you add validations to Event, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {title: 'event_title', category_id: category.id, date: Time.new(2016, 7, 7)}
+    #
+    #title = 'evento'
+    #skip("Add a hash of attributes valid for your model")
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {description: 'event_title'}
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # EventsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  #let) { {title: 'event_title', category: category} }
 
   describe "GET #index" do
     it "assigns all events as @events" do
-      event = Event.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:events)).to eq([event])
+      event1 = Event.create! valid_attributes
+      event2 = Event.create! valid_attributes
+      get :index
+      expect(assigns(:events)).to match_array([event1, event2])
+    end
+
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template("index")
+    end
+
+    it "orders by date" do
+      event1 = Event.create! valid_attributes 
+      event2 = Event.create!(title: "event_title", date: Time.new(2016, 6, 6), category_id: category.id)
+
+      expect(Event.order(date: :asc)).to eq([event2, event1])
     end
   end
 
   describe "GET #show" do
     it "assigns the requested event as @event" do
       event = Event.create! valid_attributes
-      get :show, {:id => event.to_param}, valid_session
+      get :show, {:id => event.to_param}
       expect(assigns(:event)).to eq(event)
-    end
-  end
-
-  #ATENCAO
-  describe "GET #new" do
-    xit "assigns a new event as @event" do
-      get :new, {}, valid_session
-      expect(assigns(:event)).to be_a_new(Event)
     end
   end
 
   describe "GET #edit" do
     it "assigns the requested event as @event" do
       event = Event.create! valid_attributes
-      get :edit, {:id => event.to_param}, valid_session
+      get :edit, {:id => event.to_param}
       expect(assigns(:event)).to eq(event)
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
+
       it "creates a new Event" do
+        #{:user => {'name' => 'Mr. xxx', 'email' => 'xxx@yyy.com'}}
+        #{ Account.create(account: acc) }.to change{ Account.count }.by(1)
         expect {
-          post :create, {:event => valid_attributes}, valid_session
-        }.to change(Event, :count).by(1)
+          post :create, {:event => {title: 'event_title', category_id: category.id}}
+          }.to change(Event, :count).by(1)
       end
 
       it "assigns a newly created event as @event" do
-        post :create, {:event => valid_attributes}, valid_session
+        post :create, {:event => valid_attributes}
         expect(assigns(:event)).to be_a(Event)
         expect(assigns(:event)).to be_persisted
       end
 
       it "redirects to the created event" do
-        post :create, {:event => valid_attributes}, valid_session
+        post :create, {:event => valid_attributes}
         expect(response).to redirect_to(Event.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved event as @event" do
-        post :create, {:event => invalid_attributes}, valid_session
+        post :create, {:event => invalid_attributes}
         expect(assigns(:event)).to be_a_new(Event)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:event => invalid_attributes}, valid_session
+        post :create, {:event => invalid_attributes}
         expect(response).to render_template("new")
       end
     end
@@ -109,20 +122,20 @@ RSpec.describe EventsController, type: :controller do
 
       it "updates the requested event" do
         event = Event.create! valid_attributes
-        put :update, {:id => event.to_param, :event => new_attributes}, valid_session
+        put :update, {:id => event.to_param, :event => new_attributes}
         event.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested event as @event" do
         event = Event.create! valid_attributes
-        put :update, {:id => event.to_param, :event => valid_attributes}, valid_session
+        put :update, {:id => event.to_param, :event => valid_attributes}
         expect(assigns(:event)).to eq(event)
       end
 
       it "redirects to the event" do
         event = Event.create! valid_attributes
-        put :update, {:id => event.to_param, :event => valid_attributes}, valid_session
+        put :update, {:id => event.to_param, :event => valid_attributes}
         expect(response).to redirect_to(event)
       end
     end
@@ -130,13 +143,13 @@ RSpec.describe EventsController, type: :controller do
     context "with invalid params" do
       it "assigns the event as @event" do
         event = Event.create! valid_attributes
-        put :update, {:id => event.to_param, :event => invalid_attributes}, valid_session
+        put :update, {:id => event.to_param, :event => invalid_attributes}
         expect(assigns(:event)).to eq(event)
       end
 
       it "re-renders the 'edit' template" do
         event = Event.create! valid_attributes
-        put :update, {:id => event.to_param, :event => invalid_attributes}, valid_session
+        put :update, {:id => event.to_param, :event => invalid_attributes}
         expect(response).to render_template("edit")
       end
     end
@@ -146,13 +159,13 @@ RSpec.describe EventsController, type: :controller do
     it "destroys the requested event" do
       event = Event.create! valid_attributes
       expect {
-        delete :destroy, {:id => event.to_param}, valid_session
+        delete :destroy, {:id => event.to_param}
       }.to change(Event, :count).by(-1)
     end
 
     it "redirects to the events list" do
       event = Event.create! valid_attributes
-      delete :destroy, {:id => event.to_param}, valid_session
+      delete :destroy, {:id => event.to_param}
       expect(response).to redirect_to(events_url)
     end
   end
