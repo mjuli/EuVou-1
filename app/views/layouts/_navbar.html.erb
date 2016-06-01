@@ -2,7 +2,7 @@
   <a <%= active_menu('events') %> <%= link_to ".::Euvou::.", events_path %></a>
   <ul id="slide-out" class="side-nav">
     <% if user_signed_in? %>
-        <li><a href="#mock"><%= image_tag current_user.image,class: 'profile_img' %></a></li>
+        <li><a href="#mock"></a></li>
         <li>
           <a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>
             <%= current_user.email_verified? ? current_user.name : "Carregando..."   %>
@@ -32,7 +32,9 @@
   </ul>
   <ul class="right hide-on-med-and-down">
     <% if user_signed_in? %>
-        <li><a href=<%= edit_user_password_path%>><%= image_tag current_user.image,class: 'profile_img' %></a></li>
+        <li>
+          <a href=<%= edit_user_password_path%>><%= image_tag current_user.image_url, class: :profile_img %></a>
+        </li>
         <li>
           <a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i>
             <%= current_user.email_verified? ? current_user.name : "Carregando..."   %>
