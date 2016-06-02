@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :users, through: :comments
   has_one :address
-	mount_uploader :image, ImageUploader
+	mount_uploader :images, ImageUploader
   
   accepts_nested_attributes_for :address, allow_destroy: true
 
