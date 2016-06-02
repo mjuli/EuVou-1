@@ -5,9 +5,9 @@
   </div>
   <div class='row'>
     <div class='col-md-6 col-xs-6'>
-      <%= image_tag @event.images.url(:event) %>
+      <%= image_tag @event.image.url(:event) %>
     <div class='share'>
-      <p><%= social_share_button_tag(@event.title, :image => @event.images, desc: @event.description, :popup => 'true') %></p>
+      <p><%= social_share_button_tag(@event.title, :images => @event.image, desc: @event.description, :popup => 'true') %></p>
     </div>
     </div>
     <div class='col-md-6 col-xs-6 info'>
