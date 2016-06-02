@@ -4,9 +4,10 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
 
   let(:category) { FactoryGirl.create(:category) }
-  let(:attributes_without_title) {{description: "testando", date: Time.new(2016, 7, 6), category_id: category.id}}
-  let(:attributes_without_category) {{title: "Teste", description: "testando", date: Time.new(2016, 7, 6)}}
-
+  let(:user) { FactoryGirl.create(:user) }
+  let(:attributes_without_title) {{description: "testando", category_id: category.id, user_id: user.id}}
+  let(:attributes_without_category) {{title: "Teste", description: "testando", user_id: user.id}}
+  let(:attributes_without_user) {{title: "Teste", description: "testando", category_id: category.id}}
 
   it "needs category" do
   	expect{ Event.create! attributes_without_category }
@@ -18,4 +19,11 @@ RSpec.describe Event, type: :model do
     .to raise_error(ActiveRecord::RecordInvalid,'A validação falhou: Title não pode ficar em branco')
   end
 
+  it "needs user" do
+    expect{ Event.create! attributes_without_user }
+    .to raise_error(ActiveRecord::RecordInvalid,'A validação falhou: User não pode ficar em branco')
+  end
+
+  xit "searches" do
+  end
 end
