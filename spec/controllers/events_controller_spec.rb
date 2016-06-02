@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 RSpec.describe EventsController, type: :controller do
-  Event.destroy_all
+  Event.delete_all
   
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:user]
