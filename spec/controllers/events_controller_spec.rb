@@ -38,14 +38,22 @@ RSpec.describe EventsController, type: :controller do
       expect(assigns(:event)).to eq(event1)
     end
 
-    it "assigns the requested comment as @comment" do
-      event = Event.create! valid_attributes
-      comment = FactoryGirl.create(:comment, user_id: user.id, event_id: event.id)
-      get :show, {:id => event.to_param}
-      expect(assigns(:comments)).to eq([comment])
+    context "comments #show" do
+      it "assigns the requested comment as @comment" do
+        event = Event.create! valid_attributes
+        comment = FactoryGirl.create(:comment, user_id: user.id, event_id: event.id)
+        get :show, {:id => event.to_param}
+        expect(assigns(:comments)).to eq([comment])
+      end
     end
 
-    
+    context "comments #new" do
+      it "assigns a new comment as @comment" do
+        event = Event.create! valid_attributes
+        get :show, {:id => event.to_param}
+        expect(assigns(:comment)).to be_a_new(Comment)
+      end
+    end
   end
 
   describe "GET #edit" do
