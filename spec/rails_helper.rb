@@ -34,6 +34,10 @@ RSpec.configure do |config|
 
   #factory girl
   config.include FactoryGirl::Syntax::Methods
+
+  # config.mock_with :rspec do |mocks|
+  #   mocks.add_stub_and_should_receive_to ActiveRecord::Associations::CollectionProxy
+  # end
   
   #config.include Devise::Test::ControllerHelpers, type: :controller
   #config.include Devise::Test::ControllerHelpers, type: :view

@@ -3,6 +3,7 @@ require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
   Event.delete_all
+  #Comment.delete_all
   
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:user]
@@ -36,6 +37,15 @@ RSpec.describe EventsController, type: :controller do
       get :show, {:id => event1.to_param}
       expect(assigns(:event)).to eq(event1)
     end
+
+    it "assigns the requested comment as @comment" do
+      event = Event.create! valid_attributes
+      comment = FactoryGirl.create(:comment, user_id: user.id, event_id: event.id)
+      get :show, {:id => event.to_param}
+      expect(assigns(:comments)).to eq([comment])
+    end
+
+    
   end
 
   describe "GET #edit" do
