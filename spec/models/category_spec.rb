@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "needs name" do
+  	expect{ Category.create! }
+    .to raise_error(ActiveRecord::RecordInvalid,'A validação falhou: Name não pode ficar em branco')
+  end
+  
 end

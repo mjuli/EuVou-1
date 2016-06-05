@@ -15,12 +15,10 @@ RSpec.describe EventsController, type: :controller do
   let(:valid_attributes) {{title: 'event_title', category_id: category.id, date: Time.new(2016, 7, 7), user_id: user.id}}
   let(:new_valid_attributes) {{title: 'event_title2', category_id: category.id, date: Time.new(2016, 8, 8), user_id: user.id}}
   let(:invalid_attributes) {{description: 'event_title'}}
-  let(:event1) { FactoryGirl.create(:event, category_id: category.id, user_id: user.id ) }
-  let(:event2) { FactoryGirl.create(:event, date: Time.new(2016, 7, 7), category_id: category.id, user_id: user.id) }
-
   
   describe "GET #index" do
     it "assigns all events as @events" do
+      event1, event2 = Event.create!(valid_attributes), Event.create!(valid_attributes)
       get :index
       expect(assigns(:events)).to match_array([event2, event1])
     end
@@ -33,15 +31,20 @@ RSpec.describe EventsController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested event as @event" do
-      get :show, {:id => event1.to_param}
-      expect(assigns(:event)).to eq(event1)
+      event = Event.create! valid_attributes
+      get :show, {:id => event.to_param}
+      expect(assigns(:event)).to eq(event)
     end
+
+    
+
   end
 
   describe "GET #edit" do
     it "assigns the requested event as @event" do
-      get :edit, {:id => event1.to_param}
-      expect(assigns(:event)).to eq(event1)
+      event = Event.create!(valid_attributes)
+      get :edit, {:id => event.to_param}
+      expect(assigns(:event)).to eq(event)
     end
   end
 

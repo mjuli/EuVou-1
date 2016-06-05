@@ -27,6 +27,8 @@ require 'rspec/rails'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+
+  config.render_views = true 
   #para testes com devise
   config.include Devise::TestHelpers, :type => :controller
   config.include Devise::TestHelpers, :type => :view
