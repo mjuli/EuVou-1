@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :comments
   
+  has_many :eu_vous, foreign_key: :attendee_id
+  has_many :attended_events, through: :eu_vous
+
+  has_many :reports, foreign_key: :reportee_id
+  has_many :reportees, through: :reports
+
   after_create :set_default_role, if: Proc.new { User.count > 1 }
   mount_uploader :image, ImageUploader
 
@@ -84,15 +90,15 @@ class User < ActiveRecord::Base
   #Report
 
   def reporting?(event)
-    event.attendees.include?(self)
+    event.reportees.include?(self)
   end
 
   def report!(event)
-    self.eu_vous.create!(attended_event_id: event.id)
+    self.reports.create!(reported_event_id: event.id)
   end
 
   def cancel_report!(event)
-    self.eu_vous.find_by(attended_event_id: event.id).destroy
+    self.reports.find_by(reported_event_id: event.id).destroy
   end
 
   private

@@ -1,15 +1,19 @@
 class EuVousController < ApplicationController
 
 	def create
-		@event = Event.find(params[:eu_vou][:attended_event_id])
+		@event = Event.find(params[:id])
     current_user.attend!(@event)
-    redirect_to @event
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
-    @event = EuVou.find(params[:id]).attended_event
+    @event = Event.find(params[:id])
     current_user.cancel_attend!(@event)
-    redirect_to @event
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

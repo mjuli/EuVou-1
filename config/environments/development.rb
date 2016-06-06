@@ -53,7 +53,8 @@ Rails.application.configure do
 		authentication: "plain",
 		enable_starttls_auto: true,
 		user_name: 'euvou.pds@gmail.com',
-		password: 'euvou2016'
-	}
+		password: 'euvou2016',
+    enable_starttls_auto: true 
+  }
 
 end

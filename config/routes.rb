@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   
   resources :categories
   
-  resources :reports, only: [:create, :destroy]
+  post '/eu_vous/create/:id' => 'eu_vous#create', as: "euvou_path"
+
+  delete '/eu_vous/delete/:id' => 'eu_vous#destroy'
   
-  resources :eu_vous, only: [:create, :destroy]
+  post '/reports/create/:id' => 'reports#create', as: "report_path"
+
+  delete '/reports/delete/:id' => 'reports#destroy'
   
   match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   match '/profile/:id' => 'users#user_show', via: [:get, :patch], :as => :user_show

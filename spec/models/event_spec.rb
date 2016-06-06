@@ -31,3 +31,12 @@ RSpec.describe Event, type: :model do
     expect(Event.search('casa').first).to eq(event)
   end
 end
+
+
+
+
+
+
+
+
+
