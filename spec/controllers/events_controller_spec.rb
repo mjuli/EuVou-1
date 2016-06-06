@@ -3,7 +3,6 @@ require 'rails_helper'
 
 RSpec.describe EventsController, type: :controller do
   Event.delete_all
-  #Comment.delete_all
   
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:user]
@@ -22,8 +21,11 @@ RSpec.describe EventsController, type: :controller do
   
   describe "GET #index" do
     it "assigns all events as @events" do
+      Event.delete_all
+      event1 = Event.create! valid_attributes
+      event2 = Event.create! valid_attributes
       get :index
-      expect(assigns(:events)).to match_array([event2, event1])
+      expect(assigns(:events)).to match_array([event1, event2])
     end
 
     it "renders the index template" do

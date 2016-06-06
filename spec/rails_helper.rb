@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'capybara/rspec'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -30,6 +31,8 @@ RSpec.configure do |config|
   #para testes com devise
   config.include Devise::TestHelpers, :type => :controller
   config.include Devise::TestHelpers, :type => :view
+  config.include Capybara::DSL
+  #config.include Devise::TestHelpers, :type => :request
   #config.extend ControllerMacros, :type => :controller
 
   #factory girl

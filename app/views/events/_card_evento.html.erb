@@ -8,7 +8,7 @@
         </div>
 
         <div class="card-content">
-          <span class="card-title activator"><b><%= event.title %></b></span>
+          <span class="card-title activator"><b><%=link_to (event.title), event_path(event.id) %></b></span>
           <p></p>
           <div class="chip imgUser_card">
             <%= image_tag event.user.image %>
@@ -22,7 +22,7 @@
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
-          <p>Local:<% event.location %></p>
+          <p>Local:<%= event.address.location %></p>
           <p>Comentários <%= event.comments.count %></p>
         </div>
       </div>
