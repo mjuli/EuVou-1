@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   root 'events#index'
   
   get '/events/category/:category_id' => 'events#index' 
@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   end
   
   resources :categories
+  
+  resources :reports, only: [:create, :destroy]
+  
+  resources :eu_vous, only: [:create, :destroy]
   
   match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   match '/profile/:id' => 'users#user_show', via: [:get, :patch], :as => :user_show

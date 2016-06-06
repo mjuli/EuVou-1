@@ -5,6 +5,8 @@ class CreateEuVous < ActiveRecord::Migration
 			t.references :attended_event,  index: true
       t.timestamps null: false
     end
+		
 		add_index :eu_vous, [:attendee_id, :attended_event_id], unique: true
+  
   end
 end

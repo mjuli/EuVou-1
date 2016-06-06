@@ -67,6 +67,34 @@ class User < ActiveRecord::Base
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
 
+  #EuVou
+
+  def attending?(event)
+    event.attendees.include?(self)
+  end
+
+  def attend!(event)
+    self.eu_vous.create!(attended_event_id: event.id)
+  end
+
+  def cancel_attend!(event)
+    self.eu_vous.find_by(attended_event_id: event.id).destroy
+  end
+
+  #Report
+
+  def reporting?(event)
+    event.attendees.include?(self)
+  end
+
+  def report!(event)
+    self.eu_vous.create!(attended_event_id: event.id)
+  end
+
+  def cancel_report!(event)
+    self.eu_vous.find_by(attended_event_id: event.id).destroy
+  end
+
   private
 
   def set_default_role
