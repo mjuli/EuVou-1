@@ -7,6 +7,10 @@ RSpec.describe EventsController, type: :routing do
       expect(:get => "/events").to route_to("events#index")
     end
 
+    it "routes to #index" do
+      expect(:get => "/events/category/1").to route_to("events#index", :category_id => "1")
+    end
+
     it "routes to #new" do
       expect(:get => "/events/new").to route_to("events#new")
     end

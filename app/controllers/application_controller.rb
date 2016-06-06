@@ -25,8 +25,11 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << [:name, :image]
-    devise_parameter_sanitizer.for(:account_update) << :name
+    #deprecated
+    #devise_parameter_sanitizer.for(:sign_up) << [:name, :image]
+    #devise_parameter_sanitizer.for(:account_update) << :name
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
 end
