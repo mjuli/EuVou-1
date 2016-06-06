@@ -8,3 +8,4 @@ deploy:
   app: EuVou
   on:
     repo: LuanGB/EuVou
+script: bundle exec rspec
