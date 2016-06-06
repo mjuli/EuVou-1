@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-	User.delete_all
   
   before(:each) do
+    User.delete_all
     @request.env["devise.mapping"] = Devise.mappings[:user]
     user.confirm 
     sign_in user

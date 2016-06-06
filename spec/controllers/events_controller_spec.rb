@@ -2,9 +2,9 @@ require 'rails_helper'
 
 
 RSpec.describe EventsController, type: :controller do
-  Event.delete_all
   
   before(:each) do
+    Event.delete_all
     @request.env["devise.mapping"] = Devise.mappings[:user]
     user.confirm 
     sign_in user
@@ -21,7 +21,6 @@ RSpec.describe EventsController, type: :controller do
   
   describe "GET #index" do
     it "assigns all events as @events" do
-      Event.delete_all
       event1 = Event.create! valid_attributes
       event2 = Event.create! valid_attributes
       get :index
