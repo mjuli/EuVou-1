@@ -45,12 +45,12 @@ RSpec.describe "Events", type: :request do
   end
   
   describe "PUT /events" do
-    it "updates an event" do
+    xit "updates an event" do
     end
   end
 
   describe "DELETE /events" do
-    it "remove an event" do
+    xit "remove an event" do
     end
   end
 end
