@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Address, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  let(:attributes_without_event) {}
+
+  xit "needs attributes" do
+  	expect{ Address.create! attributes_without_event }
+  	.to raise_error(ActiveRecord::RecordInvalid,'A validação falhou: Event não pode ficar em branco')
+  end
 end

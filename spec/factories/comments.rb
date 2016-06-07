@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :comment do
-    body "Teste"
+	body "Evento legal"
 	user nil
 	event nil
   end

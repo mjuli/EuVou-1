@@ -9,6 +9,7 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe "GET #index" do
     it "assigns all categories as @categories" do
+      Category.delete_all
       category = Category.create! valid_attributes
       get :index, :format => :json
       expect(assigns(:categories)).to eq([category])

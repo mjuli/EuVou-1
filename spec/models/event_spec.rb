@@ -2,7 +2,9 @@ require 'rails_helper'
 
 
 RSpec.describe Event, type: :model do
-  Event.delete_all
+  before(:each) do
+    Event.delete_all
+  end
 
   let(:category) { FactoryGirl.create(:category) }
   let(:user) { FactoryGirl.create(:user) }
