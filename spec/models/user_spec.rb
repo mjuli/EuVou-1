@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  User.delete_all
 
   let(:valid_attributes) {{name: "Eu Vou"}}
   let(:attributes_without_name) {{email: Faker::Internet.email, password: "password"}}

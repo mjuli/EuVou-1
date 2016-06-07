@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Comments", type: :request do
 	before(:each) do
-		Event.delete_all
 		category = FactoryGirl.create(:category)
 		user = FactoryGirl.create(:user)
   	@event = FactoryGirl.create(:event, title: "Festa na Praia", category_id: category.id, user_id: user.id)

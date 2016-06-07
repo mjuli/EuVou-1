@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
-
+  
+  #usuario precisa estar logado
   before(:each) do
-    Comment.delete_all
-    #usuario precisa estar logado
     @request.env["devise.mapping"] = Devise.mappings[:user]
     user.confirm 
     sign_in user

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  Comment.delete_all
 
   let(:category) { FactoryGirl.create(:category) }
   let(:user) { FactoryGirl.create(:user) }

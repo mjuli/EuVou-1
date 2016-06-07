@@ -2,14 +2,11 @@ require 'rails_helper'
 
 RSpec.describe CategoriesController, type: :controller do
 
-  Category.delete_all
-
   let(:valid_attributes) {{name: 'cinema'}}
   let(:invalid_attributes) {}
 
   describe "GET #index" do
     it "assigns all categories as @categories" do
-      Category.delete_all
       category = Category.create! valid_attributes
       get :index, :format => :json
       expect(assigns(:categories)).to eq([category])

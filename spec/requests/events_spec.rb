@@ -2,11 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Events", type: :request do
 
-	before(:each) do
-		Event.delete_all
-		Category.delete_all
-	end
-
 	def logar
 		@user = FactoryGirl.create(:user)
   	@user.confirm 
