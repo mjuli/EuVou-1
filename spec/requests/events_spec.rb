@@ -18,9 +18,15 @@ RSpec.describe "Events", type: :request do
 		
 		click_button "Entrar"
 	end
+  
+  def criar_evento
+    category = FactoryGirl.create(:category)
+    @event = FactoryGirl.create(:event, title: "Casa de praia", user_id: @user.id, category_id: category.id)
+    address = FactoryGirl.create(:address, event_id: @event.id)
+  end
 
   describe "GET /events" do
-    xit "creates an event" do
+    it "creates an event" do
     	category = FactoryGirl.create(:category)
     	
     	logar
@@ -29,11 +35,9 @@ RSpec.describe "Events", type: :request do
 
     	click_link('Novo evento', match: :first)
     	
-    	screenshot_and_save_page	
-    	
     	expect{
 	      fill_in "Título", with: "Festa dos Solteiros"
-	      select category.id, :from => "Categoria" 
+	      select "Musica", from: "event[category_id]"
 	      fill_in "Descrição", with: "Casado também pode"
 	      fill_in "Local", with: "Av. Roberto Freire, Natal - RN"
 	      click_button "Confirmar"
@@ -45,12 +49,49 @@ RSpec.describe "Events", type: :request do
   end
   
   describe "PUT /events" do
-    xit "updates an event" do
+    it "updates an event" do
+      logar
+      criar_evento
+
+      visit root_path
+
+      click_link 'Casa de praia'
+
+      within 'h3' do
+        expect(page).to have_content("Casa de praia")
+      end
+      
+      click_link 'Editar'
+      
+      fill_in "Título", with: "Festa dos Solteiros"
+      click_button "Confirmar"
+      
+      within 'h3' do
+        expect(page).to have_content("Festa dos Solteiros")
+      end
     end
   end
 
   describe "DELETE /events" do
-    xit "remove an event" do
+    it "remove an event", js: true do
+      logar
+      criar_evento
+
+      visit root_path
+
+      click_link 'Casa de praia'
+
+      within 'h3' do
+        expect(page).to have_content("Casa de praia")
+      end
+
+      #screenshot_and_save_page  
+      
+      expect{
+        click_link 'Remover'
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to_not have_content("Casa de praia")
+      }.to change(Event,:count).by(-1)  
     end
   end
 end
