@@ -92,6 +92,8 @@ RSpec.describe "Events", type: :request do
         page.driver.browser.switch_to.alert.accept
         expect(page).to_not have_content("Casa de praia")
       }.to change(Event,:count).by(-1)  
+
+      expect(page).to have_content("Event was successfully destroyed.")
     end
   end
 end
