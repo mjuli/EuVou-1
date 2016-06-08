@@ -8,15 +8,17 @@ RSpec.describe EventsController, type: :controller do
     sign_in user
   end
   
+  let(:address) { FactoryGirl.create(:address)}
   let(:category) { FactoryGirl.create(:category) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:valid_attributes) {{title: 'event_title', category_id: category.id, date: Time.new(2016, 7, 7), user_id: user.id}}
-  let(:new_valid_attributes) {{title: 'event_title2', category_id: category.id, date: Time.new(2016, 8, 8), user_id: user.id}}
+  let(:valid_attributes) {{title: 'event_title', category_id: category.id, user_id: user.id}}
+  let(:new_valid_attributes) {{title: 'event_title2', category_id: category.id, user_id: user.id}}
   let(:invalid_attributes) {{description: 'event_title'}}
   
   describe "GET #index" do
     it "assigns all events as @events" do
-      event1, event2 = Event.create!(valid_attributes), Event.create!(valid_attributes)
+      event1, event2 = FactoryGirl.create(:event, valid_attributes), FactoryGirl.create(:event, valid_attributes)
+      address1, address2 = FactoryGirl.create(:address, event_id: event1.id), FactoryGirl.create(:address, event_id: event2.id)
       get :index
       expect(assigns(:events)).to match_array([event2, event1])
     end
@@ -29,14 +31,16 @@ RSpec.describe EventsController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested event as @event" do
-      event = Event.create! valid_attributes
+      event = FactoryGirl.create(:event, valid_attributes)
+      address = FactoryGirl.create(:address, event_id: event.id)
       get :show, {:id => event.to_param}
       expect(assigns(:event)).to eq(event)
     end
 
     context "comments #show" do
       it "assigns the requested comment as @comment" do
-        event = Event.create! valid_attributes
+        event = FactoryGirl.create(:event, valid_attributes)
+        address = FactoryGirl.create(:address, event_id: event.id)
         comment = FactoryGirl.create(:comment, user_id: user.id, event_id: event.id)
         get :show, {:id => event.to_param}
         expect(assigns(:comments)).to eq([comment])
@@ -45,7 +49,8 @@ RSpec.describe EventsController, type: :controller do
 
     context "comments #new" do
       it "assigns a new comment as @comment" do
-        event = Event.create! valid_attributes
+        event = FactoryGirl.create(:event, valid_attributes)
+        address = FactoryGirl.create(:address, event_id: event.id)
         get :show, {:id => event.to_param}
         expect(assigns(:comment)).to be_a_new(Comment)
       end

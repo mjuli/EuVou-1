@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
 		@events = Event.search(params[:search]).order(date: :asc).where('date >= ?', Date.today)
+    @address = Address.all
     
     if(params[:category_id])
       @events = @events.where('category_id = ?', params[:category_id])
@@ -26,6 +27,7 @@ class EventsController < ApplicationController
   def show
     @comments = @event.comments
     @comment = Comment.new
+    @address = @event.address
   end
 
   # GET /events/new

@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action  :set_user, :finish_signup
 
-   def index
-     @users = User.find.all
-   end
+  def index
+    @users = User.find.all
+  end
 
   def finish_signup
     if request.patch? && params[:user] #&& params[:user][:email]

@@ -59,7 +59,10 @@ RSpec.describe "Events", type: :request do
       click_link 'Editar'
       
       fill_in "Título", with: "Festa dos Solteiros"
+      fill_in "Local", with: "Av. Roberto Freire, Natal - RN"
       click_button "Confirmar"
+
+      #screenshot_and_save_page 
       
       within 'h3' do
         expect(page).to have_content("Festa dos Solteiros")
@@ -78,9 +81,7 @@ RSpec.describe "Events", type: :request do
 
       within 'h3' do
         expect(page).to have_content("Casa de praia")
-      end
-
-      #screenshot_and_save_page  
+      end 
       
       expect{
         click_link 'Remover'
