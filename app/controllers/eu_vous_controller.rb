@@ -8,7 +8,7 @@ class EuVousController < ApplicationController
 
   def destroy
     @event = EuVou.find(params[:id]).attended_event
-    current_user.cancel!(@event)
+    current_user.cancel_attend!(@event)
     redirect_to @event
   end
 
