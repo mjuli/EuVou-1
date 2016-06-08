@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :comment do
-    content "MyText"
-user nil
-event nil
+	body "Evento legal"
+	user nil
+	event nil
   end
 
 end

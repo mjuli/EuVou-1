@@ -3,6 +3,6 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password "password"
     password_confirmation "password"
-    name "teste"
+    name "Eu Vou"
   end
 end

@@ -1,4 +1,0 @@
-<%= form_for(current_user.eu_vous.build(attended_event_id: @event.id)) do |f| %>
-  <div><%= f.hidden_field :attended_event_id %></div>
-<%= f.submit "Eu vou", class: "btn btn-large btn-primary", style:"width: 250px" %>
-<% end %>

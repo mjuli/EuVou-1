@@ -75,6 +75,7 @@ group :development, :test do
   gem 'byebug'
 	gem 'rspec-rails'
 	gem 'capybara'
+	gem 'capybara-screenshot'
 	gem 'factory_girl_rails'
 	gem 'faker'
 end

@@ -8,6 +8,12 @@ class Event < ActiveRecord::Base
   has_many :users, through: :comments
   has_one :address
 	mount_uploader :image, ImageUploader
+
+  has_many :eu_vous, foreign_key: :attended_event_id
+  has_many :attendees, through: :eu_vous
+  
+  has_many :reports, foreign_key: :reported_event_id
+  has_many :reportees, through: :reports
   
   accepts_nested_attributes_for :address, allow_destroy: true
 

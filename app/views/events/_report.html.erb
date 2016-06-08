@@ -1,0 +1,11 @@
+<span id="report">
+	<% if current_user.reporting?(event) %>
+		<%= link_to "/reports/delete/" + event.id.to_s, method: :delete, remote: true do %>
+	  		<i class="fa fa-ban"></i> Cancelar
+		<% end %> 
+	<% else %>
+		<%= link_to "/reports/create/" + event.id.to_s, method: :post, remote: true do %>
+	  		<i class="fa fa-ban"></i> Denunciar
+		<% end %>
+	<% end %>
+</span>
