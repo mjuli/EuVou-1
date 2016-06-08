@@ -9,8 +9,14 @@ Rails.application.routes.draw do
   end
   
   resources :categories
-	resources :eu_vous, only: [:create, :destroy]
-  resources :reports, only: [:create, :destroy]
+	
+  post '/euvou/:attended_event_id' => 'eu_vous#create' 
+
+  delete '/euvou/:attended_event_id' => 'eu_vous#destroy' 
+  
+  post '/report/:reported_event_id' => 'reports#create' 
+
+  delete '/report/:reported_event_id' => 'reports#destroy' 
   
   match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   match '/profile/:id' => 'users#user_show', via: [:get, :patch], :as => :user_show
