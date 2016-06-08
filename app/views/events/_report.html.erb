@@ -1,11 +1,11 @@
 <span id="report">
 	<% if current_user.reporting?(event) %>
-		<%= link_to "/reports/delete/" + event.id.to_s, method: :delete, remote: true do %>
-	  		<i class="fa fa-ban"></i> Cancelar
-		<% end %> 
+		<%= link_to report_path(reported_event_id: event.id), method: :delete do %>
+			<i class="fa fa-child fa-2x icons"></i>Cancelar <%= event.reportees.count %>
+        <% end %>	 
 	<% else %>
-		<%= link_to "/reports/create/" + event.id.to_s, method: :post, remote: true do %>
-	  		<i class="fa fa-ban"></i> Denunciar
-		<% end %>
+		<%= link_to reports_path(:eu_vou => { reported_event_id: event.id }), method: :post do %>
+			<i class="fa fa-child fa-2x icons"></i>Denunciar <%= event.reportees.count %>
+	    <% end %>	
 	<% end %>
 </span>

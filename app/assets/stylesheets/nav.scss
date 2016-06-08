@@ -90,4 +90,32 @@ textarea {
   
 }
 
-	
+h5{
+	font-size: 1.25rem !important;
+}
+
+.tab-geral{
+	margin-bottom: 20px !important;
+}
+
+.tabs .tab-01 a{
+	font-family: "Ubuntu", Tahoma, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	color: #333333 !important;
+
+	&:hover{
+		text-decoration: none !important;
+	}
+
+	&:focus{
+		text-decoration: none !important;
+	}
+
+	&:active{
+		text-decoration: none !important;
+	}
+}
+
+
+.tabs .indicator{
+	background-color: $color-first !important;
+}

@@ -8,6 +8,13 @@ App.init = ->
   $('ul.tabs').tabs()
 
 
+$(document).ready ->
+  $('ul.tabs').tabs()
+  return
+
+
+
+
   #script facebook
   window.fbAsyncInit = ->
   FB.init
@@ -30,4 +37,3 @@ App.init = ->
 
 $(document).on "page:change", ->
   App.init()
-
