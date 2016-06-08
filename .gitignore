@@ -22,3 +22,5 @@ tmp/
 
 .DS_Store
 db/.DS_Store
+
+public/*

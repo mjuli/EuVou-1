@@ -16,7 +16,7 @@
 //= require bootstrap
 //= require geocomplete
 //= require turbolinks
-// require_tree
+//= require_tree
 //= require materialize-sprockets
 //= require init
 

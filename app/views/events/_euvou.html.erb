@@ -1,0 +1,11 @@
+<span id="euvou">
+	<% if current_user.attending?(event) %>
+		<%= link_to "/eu_vous/delete/" + event.id.to_s, method: :delete, remote: true do%>
+	  		<i class="fa fa-child fa-2x icons"></i>Não Vou
+		<% end %> 
+	<% else %>
+		<%= link_to "/eu_vous/create/" + event.id.to_s, method: :post, remote: true do %>
+	  		<i class="fa fa-child fa-2x icons"></i> Eu Vou!
+		<% end %>
+	<% end %>
+</span>

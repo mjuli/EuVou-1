@@ -1,15 +1,19 @@
 class ReportsController < ApplicationController
 
   def create
-    @event = Event.find(params[:report][:reported_event_id])
+    @event = Event.find(params[:id])
     current_user.report!(@event)
-    redirect_to @event
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
-    @event = EuVou.find(params[:id]).reported_event
+    @event = Event.find(params[:id])
     current_user.cancel_report!(@event)
-    redirect_to @event
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

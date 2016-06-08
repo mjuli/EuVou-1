@@ -7,7 +7,10 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
+<<<<<<< HEAD
 require 'database_cleaner'
+=======
+>>>>>>> 5776b68ca67f0d4680e8957ed75b7e0b1777bd00
 
 # Add additional requires below this line. Rails is not loaded until this point!
 # Requires supporting ruby files with custom matchers and macros, etc, in

@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe EventsController, type: :controller do
   
   before(:each) do
+    Event.delete_all
     @request.env["devise.mapping"] = Devise.mappings[:user]
     user.confirm 
     sign_in user
@@ -20,7 +21,7 @@ RSpec.describe EventsController, type: :controller do
       event1, event2 = FactoryGirl.create(:event, valid_attributes), FactoryGirl.create(:event, valid_attributes)
       address1, address2 = FactoryGirl.create(:address, event_id: event1.id), FactoryGirl.create(:address, event_id: event2.id)
       get :index
-      expect(assigns(:events)).to match_array([event2, event1])
+      expect(assigns(:events)).to match_array([event1, event2])
     end
 
     it "renders the index template" do
@@ -51,6 +52,23 @@ RSpec.describe EventsController, type: :controller do
       it "assigns a new comment as @comment" do
         event = FactoryGirl.create(:event, valid_attributes)
         address = FactoryGirl.create(:address, event_id: event.id)
+        get :show, {:id => event.to_param}
+        expect(assigns(:comment)).to be_a_new(Comment)
+      end
+    end
+
+    context "comments #show" do
+      it "assigns the requested comment as @comment" do
+        event = Event.create! valid_attributes
+        comment = FactoryGirl.create(:comment, user_id: user.id, event_id: event.id)
+        get :show, {:id => event.to_param}
+        expect(assigns(:comments)).to eq([comment])
+      end
+    end
+
+    context "comments #new" do
+      it "assigns a new comment as @comment" do
+        event = Event.create! valid_attributes
         get :show, {:id => event.to_param}
         expect(assigns(:comment)).to be_a_new(Comment)
       end
