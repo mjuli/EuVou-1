@@ -1,39 +1,68 @@
 $(document).ready(function() {
-     var options = {
-      map: "#map",
-      mapOptions: {
-        streetViewControl: false
-      },
-      markerOptions: {
-        draggable: true
-      }
-    };
-    $(".location").geocomplete(options).bind("geocode:result", function(event, result){
-       //get the value of the result
-      $('.latitude').val(result.geometry.location.k);
-      $('.longitude').val(result.geometry.location.B);
-      var map = $(".location").geocomplete("map");
-      map.setZoom(18);
-      map.setCenter(result.geometry.location);
-    });
-    $(".location").bind("geocode:dragged", function(event, latLng){
-      var map = $(".location").geocomplete("map");
-        map.panTo(latLng);
-        var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({'latLng': latLng }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          if (results[0]) {
-            $('.location').val(results[0].formatted_address);
-            $('.longitude').val(results[0].geometry.location.k);
-            $('.latitude').val(results[0].geometry.location.B);
-          }
-        }
-      });
-    });
+	var mapOptions = {
+		center: { lat: -5.779264899999999, lng: -35.200902600000006 },
+		zoom: 13,
+		scrollwheel: false
+	};
+
+	if ($('.latitude').val() != '') {
+			mapOptions.center.lat = parseFloat($('.latitude').val());
+			mapOptions.center.lng = parseFloat($('.longitude').val());
+			mapOptions.zoom = 17;
+  }
+		
+  var map = new google.maps.Map(document.getElementById('map'),
+    mapOptions);
+
+  var input = $(".location")[0];
+
+  // Create the autocomplete helper, and associate it with
+  // an HTML text input box.
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo('bounds', map);
+
+  var infowindow = new google.maps.InfoWindow();
+  var marker = new google.maps.Marker({
+    map: map,
+		position: mapOptions.center
+  });
+	
+	if ($('.latitude').val() != '') {
+		marker.setVisible(true);
+	}
+	
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map, marker);
+  });
+
+  // Get the full place details when the user selects a place from the
+  // list of suggestions.
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    infowindow.close();
+    var place = autocomplete.getPlace();
+    if (!place.geometry) {
+      return;
+    }
+
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(17);
+    }
+
+    // Set the position of the marker using the place ID and location.
+    marker.setPlace(/** @type {!google.maps.Place} */ ({
+      placeId: place.place_id,
+      location: place.geometry.location
+    }));
+		console.log(place);
+		 $('.location').val(place.formatted_address);
+		 $('.place').val(place.name);	
+		 $('.latitude').val(place.geometry.location.lat());
+     $('.longitude').val(place.geometry.location.lng());
     
-    $("#map-container").hide();
-    $(".location").on("change", function() {
-           $('#map-container').slideDown();
-            google.maps.event.trigger(map, 'resize');
-    });
+		marker.setVisible(true);
+
+  });
 });

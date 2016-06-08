@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
   has_many :identities, dependent: :destroy
 
   has_many :events
-  has_many :comments
+	has_many :comments
+	has_many :eu_vous, foreign_key: :attendee_id
+	has_many :attended_events, through: :eu_vous
   
   has_many :eu_vous, foreign_key: :attendee_id
   has_many :attended_events, through: :eu_vous
@@ -51,15 +53,23 @@ class User < ActiveRecord::Base
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-          name: auth.info.name || auth.extra.nickname ||  auth.uid,
-          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          password: Devise.friendly_token[0,20],
-          image: auth.info.image,
+					name: auth.info.name || auth.extra.nickname ||  auth.uid,
+					email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+					password: Devise.friendly_token[0,20],
+					image: auth.info.image
         )
         user.skip_confirmation!
         user.save!
       end
     end
+		
+		def largeimage
+			"http://graph.facebook.com/#{self.uid}/picture?type=large"
+		end
+	 
+		def normalimage
+			"http://graph.facebook.com/#{self.uid}/picture?type=normal"
+		end
 
     # Associate the identity with the user if needed
     if identity.user != user
@@ -71,6 +81,16 @@ class User < ActiveRecord::Base
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+	
+	# Event methods
+	
+  def upcoming_events
+    self.attended_events.upcoming
+  end
+
+  def previous_events
+    self.attended_events.past
   end
 
   #EuVou
