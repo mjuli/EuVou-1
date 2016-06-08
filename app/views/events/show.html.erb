@@ -11,7 +11,10 @@
     </div>
     </div>
     <div class='col-md-6 col-xs-6 info'>
-			<b>Local:</b> <%= @event.address.location %> <br>
+			<b>Local:</b> 
+        <% if @event.address != nil %>
+          <%= @event.address.location %>
+        <% end %> <br>
       <b>Data:</b> <%= @event.date.strftime('%d/%b/%Y') %><br>
     </div>
   </div>

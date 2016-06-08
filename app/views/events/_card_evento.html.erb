@@ -22,7 +22,11 @@
         </div>
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
-          <p>Local:<%= event.address.location %></p>
+          <p>Local:
+            <% if event.address != nil %>
+              <%= event.address.location %>
+            <% end %>
+          </p>
           <p>Comentários <%= event.comments.count %></p>
         </div>
       </div>
