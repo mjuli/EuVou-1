@@ -9,18 +9,17 @@ Rails.application.routes.draw do
   end
   
   resources :categories
-  
-  post '/eu_vous/create/:id' => 'eu_vous#create', as: "euvou_path"
+	
+  post '/euvou/:attended_event_id' => 'eu_vous#create' 
 
-  delete '/eu_vous/delete/:id' => 'eu_vous#destroy'
+  delete '/euvou/:attended_event_id' => 'eu_vous#destroy' 
   
-  post '/reports/create/:id' => 'reports#create', as: "report_path"
+  post '/report/:reported_event_id' => 'reports#create' 
 
-  delete '/reports/delete/:id' => 'reports#destroy'
+  delete '/report/:reported_event_id' => 'reports#destroy' 
   
   match '/profile/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   match '/profile/:id' => 'users#user_show', via: [:get, :patch], :as => :user_show
-
   devise_for :users, :controllers => { registration: 'registration', omniauth_callbacks: 'omniauth_callbacks' }
 
 end

@@ -9,18 +9,19 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
-/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 log/
 tmp/*.cache
-tmp/
 /tmp
 /tmp/*
 
 .DS_Store
 db/.DS_Store
 
+Gemfile.lock
 public/*
+public 
+application.yml

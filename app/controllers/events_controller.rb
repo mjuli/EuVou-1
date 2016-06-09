@@ -15,7 +15,8 @@ class EventsController < ApplicationController
     end
     
     @categories = Category.order(name: :asc)
-
+  	@events_upcoming = Event.upcoming
+    @events_past = Event.past
     respond_to do |format|
       format.html # user_show.html.erb
       format.json {render json: @events.as_json}
@@ -39,8 +40,6 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
 		authorize_action_for @event
-    @event.build_address
-
   end
 
   # POST /events
@@ -97,7 +96,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-			params.require(:event).permit(:title, :category_id, :description, :date, :image, :user_id, :local, address_attributes: [:id, :location, :lat, :lon])
+			params.require(:event).permit(:title, :category_id, :description, :date, :image, :image_cache, :user_id, :local,  :location, address_attributes: [:id, :place, :location, :lat, :lon])
     end
     
 end

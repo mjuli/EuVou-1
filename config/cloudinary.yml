@@ -1,19 +1,17 @@
----
 development:
-  cloud_name: dzhmp4uha
-  api_key: '135235728944617'
-  api_secret: fHGhIViXmgTYuDT05Ju6HQom5VA
+  cloud_name: <%= ENV['CLOUD_NAME'] %>
+  api_key: <%= ENV['CLOUD_API_KEY'] %>
+  api_secret: <%= ENV['CLOUD_API_SECRET'] %>
   enhance_image_tag: true
   static_image_support: false
 production:
-  cloud_name: dzhmp4uha
-  api_key: '135235728944617'
-  api_secret: fHGhIViXmgTYuDT05Ju6HQom5VA
+  cloud_name: <%= ENV['CLOUD_NAME'] %>
+  api_key: <%= ENV['CLOUD_API_KEY'] %>
+  api_secret: <%= ENV['CLOUD_API_SECRET'] %>
   enhance_image_tag: true
   static_image_support: true
 test:
-  cloud_name: dzhmp4uha
-  api_key: '135235728944617'
-  api_secret: fHGhIViXmgTYuDT05Ju6HQom5VA
-  enhance_image_tag: true
-  static_image_support: false
+  cloud_name: <%= ENV['CLOUD_NAME'] %>
+  api_key: <%= ENV['CLOUD_API_KEY'] %>
+  api_secret: <%= ENV['CLOUD_API_SECRET'] %>
+
