@@ -59,6 +59,7 @@ RSpec.describe EventsController, type: :controller do
     context "comments #show" do
       it "assigns the requested comment as @comment" do
         event = Event.create! valid_attributes
+        address = FactoryGirl.create(:address, event_id: event.id)
         comment = FactoryGirl.create(:comment, user_id: user.id, event_id: event.id)
         get :show, {:id => event.to_param}
         expect(assigns(:comments)).to eq([comment])
@@ -68,6 +69,7 @@ RSpec.describe EventsController, type: :controller do
     context "comments #new" do
       it "assigns a new comment as @comment" do
         event = Event.create! valid_attributes
+        address = FactoryGirl.create(:address, event_id: event.id)
         get :show, {:id => event.to_param}
         expect(assigns(:comment)).to be_a_new(Comment)
       end
@@ -77,6 +79,7 @@ RSpec.describe EventsController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested event as @event" do
       event = Event.create!(valid_attributes)
+      address = FactoryGirl.create(:address, event_id: event.id)
       get :edit, {:id => event.to_param}
       expect(assigns(:event)).to eq(event)
     end

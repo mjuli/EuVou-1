@@ -15,6 +15,7 @@ RSpec.describe "Events", type: :request do
     	expect{
 	      fill_in "Título", with: "Festa dos Solteiros"
 	      select "Musica", from: "event[category_id]"
+        fill_in "Data", with: "09/09/2020"
 	      fill_in "Descrição", with: "Casado também pode"
 	      fill_in "Local", with: "Av. Roberto Freire, Natal - RN"
 	      click_button "Confirmar"

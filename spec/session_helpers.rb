@@ -1,5 +1,4 @@
 module SessionHelpers
-
   def logar
     @user = FactoryGirl.create(:user)
     @user.confirm 
@@ -28,5 +27,4 @@ module SessionHelpers
     @event = FactoryGirl.create(:event, title: "Casa de praia", user_id: @user.id, category_id: category.id, date: Time.new(2016, 7, 7))
     address = FactoryGirl.create(:address, event_id: @event.id)
   end
-
 end
