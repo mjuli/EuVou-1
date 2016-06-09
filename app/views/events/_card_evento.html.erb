@@ -31,11 +31,13 @@
         <div class="card-reveal">
           <span class="card-title grey-text text-darken-4"><%= event.title %><i class="material-icons right">close</i></span>
 					<p>Local:
-						<% if event.address.place == "" %>
-							<%= event.address.location %>
-						<% else %>
-          		<%= event.address.place %>
-						<% end %>
+            <% if event.address != nil %>
+  						<% if event.address.place == "" %>
+  							<%= event.address.location %>
+  						<% else %>
+            		<%= event.address.place %>
+  						<% end %>
+            <% end %>
 					</p>
 					<p>Data: <%= event.date %></p>
 					<p>Horário: <%= event.time %> </p>
