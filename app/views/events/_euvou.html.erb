@@ -1,4 +1,4 @@
-<span id="euvou">
+<span id="<%= 'euvou' + event.id.to_s %>">
 	<% if current_user.attending?(event) %>
 		<%= link_to '/euvou/' + event.id.to_s, method: :delete, remote: true do %>
 			<i class="fa fa-child fa-2x icons"></i>Não Vou <%= event.attendees.count %>
