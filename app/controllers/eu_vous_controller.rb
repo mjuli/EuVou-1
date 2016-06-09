@@ -1,7 +1,7 @@
 class EuVousController < ApplicationController
 
 	def create
-		@event = Event.find(params[:id])
+		@event = Event.find(params[:attended_event_id])
     current_user.attend!(@event)
     respond_to do |format|
       format.js
@@ -9,7 +9,7 @@ class EuVousController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:attended_event_id])
     current_user.cancel_attend!(@event)
     respond_to do |format|
       format.js
