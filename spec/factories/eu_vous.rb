@@ -1,8 +1,6 @@
 FactoryGirl.define do
   factory :eu_vou do
-    euvou false
-	user nil
-	event nil
+    atendee nil
+    atended_event nil
   end
-
 end

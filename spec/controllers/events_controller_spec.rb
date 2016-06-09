@@ -12,8 +12,8 @@ RSpec.describe EventsController, type: :controller do
   let(:address) { FactoryGirl.create(:address)}
   let(:category) { FactoryGirl.create(:category) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:valid_attributes) {{title: 'event_title', category_id: category.id, user_id: user.id}}
-  let(:new_valid_attributes) {{title: 'event_title2', category_id: category.id, user_id: user.id}}
+  let(:valid_attributes) {{title: 'event_title', category_id: category.id, user_id: user.id, date: Time.new(2016, 7, 7)}} 
+  let(:new_valid_attributes) {{title: 'event_title2', category_id: category.id, user_id: user.id, date: Time.new(2016, 7, 7)}}
   let(:invalid_attributes) {{description: 'event_title'}}
   
   describe "GET #index" do

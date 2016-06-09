@@ -15,13 +15,14 @@
             <%= link_to (event.user.name), user_show_path(event.user) %>
           </div>
           <hr>
-
-          <%= render partial: "euvou", locals: {event: event} %>
+          <% if current_user %>
+            <%= render partial: "euvou", locals: {event: event} %>
+          <% end %>
 
           <i class="fa fa-comment fa-2x icons icon-margin"></i> <%= event.comments.count %>  
-
-          <%= render partial: "report", locals: {event: event} %>
-          
+          <% if current_user %>
+            <%= render partial: "report", locals: {event: event} %>
+          <% end %>
           <span class="activator icon_option icons"><i class="material-icons right">more_vert</i></span>
         </div> 
         <div class="card-reveal">

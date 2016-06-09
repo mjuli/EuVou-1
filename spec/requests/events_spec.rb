@@ -16,7 +16,7 @@ RSpec.describe "Events", type: :request do
   
   def criar_evento
     category = FactoryGirl.create(:category)
-    @event = FactoryGirl.create(:event, title: "Casa de praia", user_id: @user.id, category_id: category.id)
+    @event = FactoryGirl.create(:event, title: "Casa de praia", user_id: @user.id, category_id: category.id, date: Time.new(2016, 7, 7))
     address = FactoryGirl.create(:address, event_id: @event.id)
   end
 
@@ -73,9 +73,10 @@ RSpec.describe "Events", type: :request do
   describe "DELETE /events" do
     it "remove an event", js: true do
       logar
+      
       criar_evento
 
-      visit root_path
+      visit "/events"
 
       click_link 'Casa de praia'
 
@@ -87,7 +88,7 @@ RSpec.describe "Events", type: :request do
         click_link 'Remover'
         page.driver.browser.switch_to.alert.accept
         expect(page).to_not have_content("Casa de praia")
-      }.to change(Event,:count).by(-1)  
+      }.to change(Event, :count).by(-1)  
 
       expect(page).to have_content("Event was successfully destroyed.")
     end
