@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe EventsController, type: :controller do
   
   before(:each) do
-    Event.delete_all
     @request.env["devise.mapping"] = Devise.mappings[:user]
     user.confirm 
     sign_in user

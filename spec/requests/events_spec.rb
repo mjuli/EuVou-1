@@ -2,24 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Events", type: :request do
 
-	def logar
-		@user = FactoryGirl.create(:user)
-  	@user.confirm 
-
-  	visit "/users/sign_in"
-
-    fill_in "Email",    :with => @user.email
-    fill_in "Password", :with => @user.password
-		
-		click_button "Entrar"
-	end
-  
-  def criar_evento
-    category = FactoryGirl.create(:category)
-    @event = FactoryGirl.create(:event, title: "Casa de praia", user_id: @user.id, category_id: category.id, date: Time.new(2016, 7, 7))
-    address = FactoryGirl.create(:address, event_id: @event.id)
-  end
-
   describe "GET /events" do
     it "creates an event" do
     	category = FactoryGirl.create(:category)
@@ -38,7 +20,7 @@ RSpec.describe "Events", type: :request do
 	      click_button "Confirmar"
 	    }.to change(Event,:count).by(1)
 
-	    expect(page).to have_content("Event was successfully created.")
+	    expect(page).to have_content("Evento foi criado com sucesso!")
 	    expect(page).to have_content("Festa dos Solteiros")
     end
   end
@@ -90,7 +72,7 @@ RSpec.describe "Events", type: :request do
         expect(page).to_not have_content("Casa de praia")
       }.to change(Event, :count).by(-1)  
 
-      expect(page).to have_content("Event was successfully destroyed.")
+      expect(page).to have_content("Evento foi removido com sucesso!")
     end
   end
 end
