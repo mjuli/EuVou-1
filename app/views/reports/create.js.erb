@@ -1,1 +1,1 @@
-$('#report').replaceWith('<%= j (render partial: "events/report", locals: {event: @event} )%>');
+$('#report<%= @event.id %>').replaceWith('<%= j (render partial: "events/report", locals: {event: @event} )%>');
