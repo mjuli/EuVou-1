@@ -6,8 +6,7 @@ Rails.application.configure do
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
   config.cache_classes = true
-	
-	config.i18n.available_locales = [:'pt-BR', :en]
+
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that
   # preloads Rails for running tests, you may have to set it to true.
@@ -40,9 +39,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-	
-	config.allow_concurrency = false
-
-  #Para rodar os testes
-  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

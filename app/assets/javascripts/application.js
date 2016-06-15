@@ -12,11 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require social-share-button
-//= require bootstrap
-//= require geocomplete
 //= require turbolinks
-//= require_tree
-//= require materialize-sprockets
-//= require init
+//= require bootstrap-sprockets
+//= require_tree .
 
