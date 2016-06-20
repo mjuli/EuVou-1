@@ -13,5 +13,19 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar-default .navbar-nav > li > a {
+    color: rgb(24,24,24);
+    font-size: 17px;
+}
+.navbar-default .navbar-nav > li > a:hover {
+	background-color: rgba(0,0,255,0.1);
+
+}
+
+img.logo {
+	margin-right: 30px;
+    margin-left: -30px;
+}
