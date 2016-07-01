@@ -1,0 +1,11 @@
+-language: ruby		
+-rvm:		
+-- 2.2.3		
+-deploy:		
+-  provider: heroku		
+-  api_key:		
+-    secure: ql+KGWU7Hg2eNOs0XoO6q2aWa6VNo5Mpc5Hgwf6l++LphJnuVNI2BaLw+XhsM+A5XRIFFE0jiWrvpHH0AxzCeNK7ZNSaFQQ2A+qH4IZ+aB2WnkaJHl0LoSaFevbiaoNmmVIVM0Pz100Boxo4jCK/D4O1RnKd2mxI2OHgZgKAreUe496AiG3Q7zqpyh7ei+z4D9QZceweyukQ+5P1N40GrOfa54UOa7FjC9CbCwxy5C/3kyK53uNt9o4VVWB+gsDCFLHYEH1HsEy1xLVoi084pmGEPnLifjyaJTsaHxhI/jX6Yznifc2y3ak6/JCmL3jzd8zvQCUWbg9t0+yoB/vt+3tik+W0FRSQW86Fkt1ZCRdK4WJfX4QdDP7n1fUmGaISEqbzcE7NDYMRcJxJHxmbTnNkgSdd9Cqv8li9DJpmHXoB/0IESaQenniFmZoeWtGM3/fgM6S6G0EY+1Xa926EzNaVXauBQtikT+bG+lbjLAGDnp2Zl3aiwdLvKxxvV/lUNH2tZ1NWryPOyphGy1d2FAuDFRzErrZ6YFr5LG/B/g/FqDC88xxRJk67yKKw+kpVjnAAzISp+81ZUXfG0xB4nH1ZgfYvWrZSC8jAX2rGSR7lBcVOfg8ZweQFKsGi5sooSAQDLcatKfUzLvHZskkcVUNmjmor0EcRTGHqXNi1YLk=		
+-  app: EuVou		
+-  on:		
+-    repo: euvou/EuVou		
+-script: bundle exec rspec
