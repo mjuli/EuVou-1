@@ -16,6 +16,35 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/*.pesquisa{
+  width: 100%;
+}*/
+
+ul.nav.navbar-nav {
+  width: 40%;
+}
+
+form#nav-form.navbar-form.navbar-right{
+  width: 100%;
+}
+
+div.form-group.pesquisa{
+  width: 70%;
+}
+
+input.form-control.pesquisa{
+  width: 100%; 
+}
+
+.container{
+  width: 75%;
+}
+
+.logo-nav{
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
 .navbar-default .navbar-nav > li > a {
     color: rgb(24,24,24);
     font-size: 17px;
@@ -23,11 +52,6 @@
 .navbar-default .navbar-nav > li > a:hover {
 	background-color: rgba(0,0,255,0.1);
 
-}
-
-img.logo {
-	margin-right: 30px;
-    margin-left: -30px;
 }
 
 html,
@@ -65,15 +89,6 @@ body {
     margin: 20px 0;
 }
 
-.texto-circular{
-   padding: 0 25%;
-   position: absolute; 
-   top: 50%;
-   border-radius: 0 0 400px 400px;
-   height: 50%; 
-   background-color: white;
-   opacity: 0.4; 
-}
 
 .img-relative{
    position: relative;
@@ -139,7 +154,7 @@ header.carousel .fill {
 /* Footer Styles */
 
 footer {
-    margin: 50px 0;
+    margin: 20px 0;
 }
 
 /* Responsive Styles */
@@ -162,22 +177,17 @@ footer {
 }
 
 #navbar-search {
-  margin-left: 35%; 
+  margin-left: 30%; 
   /* border: 1px solid red; */
   width: 100%;
 
 }
 
 #navbar-link-list{
-  margin-left: 18%;
+  margin-left: 2%;
 }
 
-.form-group {
-  margin-top: 3%;
-  
-}
-
-.dropdown {
-    margin-top: 4%;
+.content{
+  width: 75%;
 }
 
