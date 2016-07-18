@@ -1,15 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EuVouNewFront</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= csrf_meta_tags %>
+
+	<title>EuVouNewFront</title>
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<%= csrf_meta_tags %>
 </head>
 <body>
+	<!--Data Picker Imports -->
+	<!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+	<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
 
-<%= yield %>
+	<!--Font Awesome (added because you use icons in your prepend/append)-->
+	<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
 
+	<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+	<!-- Fim Data Picker Imports -->
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header logo-nav">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#"><%= image_tag("logo_4.png",:size => "43x40", :class => "logo") %></a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div id="navbar-search" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<form id="nav-form" class="navbar-form navbar-right" role="search">
+						<div class="form-group pesquisa">
+							<input type="text" class="form-control pesquisa" placeholder="Search">
+						</div>
+						<button type="submit" class="btn btn-default">Pesquisar</button>
+					</form>
+				</ul>
+				<ul id="navbar-link-list" class="nav navbar-nav">
+					<li><a href="#">Login</a></li>
+					<li><a href="#">Cadastro</a></li>
+					<li><button type="button" class="btn btn-default navbar-btn">Criar Evento!</button></li>
+				</ul>
+			</div>
+
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<%= yield %>
+
+	<div class="container">
+
+		<hr>
+
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-lg-12 centralizado">
+					<a href="#"><%= image_tag("logo.png",:size => "150x70", :class => "logo") %></a>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+	<!-- /.container -->
+
+	<!-- Data Picker Scripts -->
+	<!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
+	<script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
+	
+	<!-- Include jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<!-- Include Date Range Picker -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_hWHB4fAKnZrvdvQSQnvLzvOaGMUQWmE&callback=initMap"></script>
+
+	<!-- Fim Data Picker Scripts -->
 </body>
 </html>

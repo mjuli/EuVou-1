@@ -4,6 +4,33 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+.direita{
+    margin-top: 5px;
+    float: right;
+
+}
+
+.bootstrap-iso .formden_header h2, 
+.bootstrap-iso .formden_header p, 
+.bootstrap-iso form{
+    font-family: Arial, Helvetica, sans-serif; 
+    color: black
+}
+
+.bootstrap-iso form button, 
+.bootstrap-iso form button:hover{
+    color: white !important;
+} 
+
+.asteriskField{
+    color: red;
+}
+
+.bootstrap-iso{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }

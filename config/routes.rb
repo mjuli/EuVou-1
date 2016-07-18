@@ -1,13 +1,29 @@
 Rails.application.routes.draw do
-  root 'front#index'
+  #get 'user/:id' => 'user/show'
 
-  get 'front/index'
+  get 'user/login'
 
-  get 'front/show'
+  get 'user/cadastro'
 
-  get 'front/edit'
+  get 'user/:id/edit' => 'user#edit'
 
-  get 'front/new'
+  get 'event/index'
+
+  get 'event/:id' => 'event#show'
+
+  get 'new_event' => 'event#new', as: 'new_event'
+
+  #get 'event/:id' => 'event/edit'
+
+  root 'event#index'
+
+  # get 'front/index'
+
+  # get 'front/show'
+
+  # get 'front/edit'
+
+  # get 'front/new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

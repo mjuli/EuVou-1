@@ -1,0 +1,41 @@
+.show-img{
+	margin-top: 20px;
+	height: 400px;
+	width: 100%;
+}
+
+.linha p{
+	display: inline-block;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.descricao{
+	text-indent: 50px;
+	text-align: justify;
+	font-weight: normal;
+}
+
+h1.centralizado{
+	margin: 30px;
+}
+
+div.container.show{
+	width: 60%;
+	font-weight: bold;
+}
+
+#map{
+	height: 300px;
+}
+
+.comentarios h2{
+	margin: 20px;
+}
+.comentarios p{
+	margin: 10px 50px;
+}
+
+.comentar{
+	margin: 20px;
+}
