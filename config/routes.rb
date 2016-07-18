@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'login/user'
+
   root 'front#index'
 
   get 'front/index'
