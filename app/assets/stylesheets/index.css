@@ -4,8 +4,12 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+.date-category{
+    padding-top: 20px;
+}
+
 .direita{
-    margin-top: 5px;
+    margin-top: 10px;
     float: right;
 
 }
@@ -22,10 +26,6 @@
     color: white !important;
 } 
 
-.asteriskField{
-    color: red;
-}
-
 .bootstrap-iso{
     margin-top: 20px;
     margin-bottom: 10px;
@@ -39,11 +39,6 @@ body {
     width: 100%;
 }
 
-.carousel-holder {
-    margin-bottom: 30px;
-}
-
-.carousel-control,
 .item {
     border-radius: 4px;
 }
@@ -79,4 +74,3 @@ body {
 footer {
     margin: 50px 0;
 }
-
