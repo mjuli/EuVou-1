@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # get 'cadastro' => 'user#cadastro', as: 'cadastro'
 
-  # get 'login' => 'user#login', as: 'login'
+  get 'login' => 'user#login', as: 'login'
 
   # get 'edit_user' => 'user/:id/edit', as: 'edit_user'
   
