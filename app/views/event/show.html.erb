@@ -1,0 +1,35 @@
+<header>
+	
+	<div class="container">
+		<%= image_tag(@evento[:image], :class => "show-img") %>
+		
+		<div class="linha">
+			<p>Criado por: Ítalo</p>
+			<p class="direita">
+				<span class="glyphicon glyphicon-ok"></span>
+				45
+			</p>
+		</div>
+		<h1 class="centralizado"><%= @evento[:title]%></h1>
+	</div>
+	
+</header>
+
+<div class="container show">
+	<p>Data: <%= Time.parse(@evento[:time]).strftime("%d/%m/%Y")%></p>
+	<p>Hora: <%= Time.parse(@evento[:time]).strftime("%T")%></p>
+	<p>Descrição:</p>
+	<p class="descricao"><%= @evento[:description]%></p>
+	<p>Local: </p>
+
+	<div id="map"></div>
+	<hr>
+	<div class="comentarios">
+		<h2>Comentários:</h2>
+		<p>User01: Evento legal!</p>
+		<input type="text" class="comentar input-group" placeholder="Search">
+		<button type="submit" class="btn btn-default">Enviar</button>
+	</div>
+
+</div>
+

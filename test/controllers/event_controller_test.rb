@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FrontControllerTest < ActionController::TestCase
+class EventControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
@@ -11,13 +11,13 @@ class FrontControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit
+  test "should get new" do
+    get :new
     assert_response :success
   end
 
-  test "should get new" do
-    get :new
+  test "should get edit" do
+    get :edit
     assert_response :success
   end
 
