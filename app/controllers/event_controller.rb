@@ -15,11 +15,54 @@ class EventController < ApplicationController
   def new
   end
 
+  # POST /events
+  # POST /events.json
+  def create
+    # @event = Event.new(event_params)
+    # @event.user = current_user
+    # @event.lat, @event.lon = lat_lon(@event.address)
+    
+    # respond_to do |format|
+    #   if @event.save
+    #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
+    #     format.json { render :show, status: :created, location: @event }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @event.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  end
+
   def edit
     event = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
   end
 
+  # PATCH/PUT /events/1
+  # PATCH/PUT /events/1.json
+  def update
+    # authorize_action_for @event
+    
+    # respond_to do |format|
+    #   if @event.update(event_params)  
+    #     @event.lat, @event.lon = lat_lon(@event.address)
+    #     format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @event }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @event.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  end
+
+  # DELETE /events/1
+  # DELETE /events/1.json
   def destroy
+    # authorize_action_for @event
+    # @event.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private
