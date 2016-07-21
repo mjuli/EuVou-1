@@ -19,6 +19,11 @@
 /*.pesquisa{
   width: 100%;
 }*/
+
+.bold{
+ font-weight: bold; 
+}
+
 .btn-event{
   background-color: #57C3D9;
   color: white;
@@ -163,10 +168,6 @@ footer {
 @media(max-width:767px) {
     .img-portfolio {
         margin-bottom: 15px;
-    }
-
-    header.carousel .carousel {
-        height: 70%;
     }
 }
 
