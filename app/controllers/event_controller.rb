@@ -8,8 +8,9 @@ class EventController < ApplicationController
   end
 
   def show
-  	event = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
-    @evento = JSON.parse(event).symbolize_keys
+  	@evento = @events[@id.to_i - 1]
+    #event = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
+    #@evento = JSON.parse(event).symbolize_keys
     #@comentarios =
   end
 
