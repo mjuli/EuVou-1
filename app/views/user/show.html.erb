@@ -1,2 +1,45 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<header>
+	
+	<div class="container">
+		<h1 class="centralizado"><%= @user[:name] %></h1>
+	</div>
+	
+</header>
+
+<div class="centralizado">
+	<p><%= @user[:email] %></p>
+</div>
+
+<div class="container show">
+	<h3>Eventos criados por <%= @user[:name] %></h3><br>
+	<% @user[:events].each do |event| %>
+   	<div class="col-sm-4 col-lg-4 col-md-4">
+	  <div class="thumbnail">
+	      <img src=<%= event[:image] %> height="150" width="320" alt="Dory">
+	      <div class="caption">
+	          <h4 class="pull-right">$24.99</h4>
+	          <h4><a href="#"><%= event[:title] %></a></h4>
+	      </div>
+	      <div class="ratings">
+	          <p class="pull-right">15 euvous</p>
+	      </div>
+	  </div>
+	</div>
+	<% end %>
+</div>
+
+
+<hr>
+    
+<div class="container">
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12 centralizado">
+                <a href="index.html"><%= image_tag("logo_3.png",:size => "150x70", :class => "logo") %></a>
+            </div>
+        </div>
+    </footer>
+
+</div>
