@@ -64,7 +64,7 @@ div.container-fluid.categoria{
 }
 
 .img-index{
-    height: 200px;
+    height: 200px !important;
     width: 300px;
 }
 
