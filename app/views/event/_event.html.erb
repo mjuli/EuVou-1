@@ -1,12 +1,12 @@
 <div class="col-sm-4 col-lg-4 col-md-4 card-index">
   <div class="thumbnail">
-    <a href="#"><%= image_tag(event[:image], :class => "img-index") %></a>
+    <a href="/event/<%=event[:id]%>"><%= image_tag(event[:image], :class => "img-index") %></a>
     <div class="caption info">
       <h5 class="pull-right"> 
         <span class="glyphicon glyphicon-ok"></span>
           45
       </h5>
-      <h4><a href="#"><%= event[:title] %></a></h4>
+      <h4><a href="/event/<%=event[:id]%>"><%= event[:title] %></a></h4>
       <div class="thumbnail calendario-card">
         <p class="mes centralizado">Junho</p>
         <p class="dia centralizado">07</p>
