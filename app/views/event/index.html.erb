@@ -31,10 +31,14 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="#">Show</a></li>
-              <li><a href="#">Bar</a></li>
-              <li><a href="#">Teatro</a></li>
-              <li><a href="#">Congresso</a></li>
+              <li><a href="#">Arte</a></li>
+              <li><a href="#">Comidas e Bebidas</a></li>
+              <li><a href="#">Compras</a></li>
+              <li><a href="#">Cursos</a></li>
+              <li><a href="#">Esporte e Bem Estar</a></li>
+              <li><a href="#">Festas</a></li>
+              <li><a href="#">Música</a></li>
+              <li><a href="#">Networking</a></li>
             </ul>
           </div>
           <!-- Fim Dropdown -->
@@ -45,27 +49,8 @@
   <!-- Fim Data Picker -->
 
   <div class="row">
-    <!--<div class="col-sm-4 col-lg-4 col-md-4 card-index">
-      <div class="thumbnail">
-        <a href="#"><img src="http://larissacrivellarieventos.com/layout/uploads/images/musica.jpg" alt="imagem do evento" class="img-index"></a>
-        <div class="caption info">
-          <h5 class="pull-right"> 
-            <span class="glyphicon glyphicon-ok"></span>
-              45
-          </h5>
-          <h4><a href="#">Event's name</a></h4>
-          <div class="thumbnail calendario-card">
-            <p class="mes centralizado">Junho</p>
-            <p class="dia centralizado">07</p>
-          </div>
-          <div class="conteudo-card">
-            <p><span class="bold">Local: </span>Rua das Flores, 123</p>
-            <p><span class="bold">Hora:  </span>22:00</p>
-          </div>
-        </div>
-      </div>
-    </div>-->
-    <%= render "event" %>
+    <%= render partial: "event", collection: @events %>
+    
   </div>
 </div>
 
