@@ -4,6 +4,70 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+button.btn.btn-primary.search{
+    background-color: #1aa5cb;
+    margin-bottom: 26px;
+    border: 0;
+}
+
+h4 a, h5{
+    color: black;
+}
+
+h4 a:hover{
+    text-decoration: none;
+}
+
+.calendario-card{
+    display: inline-block;
+    width: 70px;
+    font-weight: bold;
+}
+
+.calendario-card p{
+    margin-bottom: 0;
+}
+
+.mes{
+    font-size: 15px;
+    background-color: #eee;
+}
+
+.dia{
+    font-size: 30px;
+    padding-right: 2px;
+}
+
+.conteudo-card{
+    display: inline-block;
+    margin-left: 10px;
+}
+
+div.thumbnail{
+    padding: 0;
+}
+
+div.form-group.data{
+    margin-bottom: -15px;
+    height: 60px;
+}
+
+div.col-sm-4.agenda{
+    width: 200px;
+    display: inline-block;
+    margin-right: 0;
+}
+
+div.container-fluid.categoria{
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.img-index{
+    height: 200px;
+    width: 300px;
+}
+
 .date-category{
     padding-top: 20px;
 }
@@ -29,6 +93,7 @@
 .bootstrap-iso{
     margin-top: 20px;
     margin-bottom: 10px;
+    background-color: #eee !important;
 }
 
 body {
@@ -63,12 +128,18 @@ body {
 }
 
 .thumbnail {
-    padding: 0;
+    margin: 0;
 }
 
-.thumbnail .caption-full {
+div.thumbnail.calendario-card{
+    margin:0;
+    display: inline-block;
+}
+
+.thumbnail .caption-full{
     padding: 9px;
     color: #333;
+    
 }
 
 footer {

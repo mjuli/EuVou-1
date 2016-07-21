@@ -2,7 +2,8 @@ class EventController < ApplicationController
   before_action :set_event, only: [:show, :edit, :destroy]
 
   def index
-  	#events = RestClient.get 'http://jsonplaceholder.typicode.com/posts'
+  	@events = nil;
+    #events = RestClient.get 'http://jsonplaceholder.typicode.com/posts'
   	#@events = JSON.parse(response).symbolize_keys
   end
 

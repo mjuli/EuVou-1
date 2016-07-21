@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   resources :event
 
-  get 'login/user'
-
   get '/users/:id' => "user#show"
   
   get 'user/cadastro'
@@ -20,6 +18,8 @@ Rails.application.routes.draw do
   
   #get 'front/login'
 
+  #get 'login/user'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
