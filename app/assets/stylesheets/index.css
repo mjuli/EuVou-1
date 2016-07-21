@@ -4,6 +4,13 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+button#dropdownMenu1.btn.btn-default.dropdown-toggle.drop-category:hover,
+button#dropdownMenu1.btn.btn-default.dropdown-toggle.drop-category:focus{
+    background-color: #57C3D9;
+    color: white;
+    border:0;
+}
+
 button.btn.btn-primary.search{
     background-color: #1aa5cb;
     margin-bottom: 26px;
