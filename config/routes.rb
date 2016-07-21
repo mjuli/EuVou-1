@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'login/user'
   
+  get 'user/cadastro'
+  
   root 'event#index'
   
   # get 'user/:id' => 'user#show'
