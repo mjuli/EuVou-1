@@ -54,29 +54,23 @@ div.thumbnail{
     padding: 0;
 }
 
-div.form-group.data{
-    margin-bottom: -15px;
-    height: 60px;
+.form-horizontal .form-group{
+    margin-bottom: 0px !important;
+    padding-bottom: 0 !important;
 }
 
 div.col-sm-4.agenda{
     width: 200px;
     display: inline-block;
-    margin-right: 0;
 }
 
 div.container-fluid.categoria{
     padding: 0;
-    margin-bottom: 20px;
 }
 
 .img-index{
     height: 200px !important;
     width: 300px;
-}
-
-.date-category{
-    padding-top: 20px;
 }
 
 .direita{
@@ -145,10 +139,9 @@ div.thumbnail.calendario-card{
 
 .thumbnail .caption-full{
     padding: 9px;
-    color: #333;
-    
+    color: #333;   
 }
 
 footer {
-    margin: 50px 0;
+ margin: 50px 0;
 }
