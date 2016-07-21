@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/users/:id' => "user#show"
   
+  get 'user/cadastro'
+  
   root 'event#index'
   
   # get 'user/:id' => 'user#show'
