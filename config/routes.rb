@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :event
 
   get 'login/user'
+
+  get '/users/:id' => "user#show"
+  
+  get 'user/cadastro'
   
   root 'event#index'
   
