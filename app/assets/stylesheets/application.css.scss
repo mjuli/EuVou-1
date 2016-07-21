@@ -19,9 +19,23 @@
 /*.pesquisa{
   width: 100%;
 }*/
+body{
+  background-color: #eee; 
+}
+
+.white{
+  background-color: white;
+  border-color: white;
+}
 
 .bold{
  font-weight: bold; 
+}
+
+button.btn.btn-default.navbar-btn.btn-event:hover{
+  background-color: white;
+  color: #57C3D9;
+  border-color: #57C3D9;
 }
 
 .btn-event{

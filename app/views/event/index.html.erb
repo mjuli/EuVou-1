@@ -17,8 +17,8 @@
                 </div>
               </div>
 
-              <button class="btn btn-primary " name="submit" type="submit" disabled="true">
-                Pesquisar
+              <button class="btn btn-primary search" name="submit" type="submit" disabled="true">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
               </button>
             </div>
           </form>
@@ -48,13 +48,13 @@
     <div class="col-sm-4 col-lg-4 col-md-4 card-index">
       <div class="thumbnail">
         <a href="#"><img src="http://larissacrivellarieventos.com/layout/uploads/images/musica.jpg" alt="imagem do evento" class="img-index"></a>
-        <div class="caption">
-          <h5 class="pull-right">
+        <div class="caption info">
+          <h5 class="pull-right"> 
             <span class="glyphicon glyphicon-ok"></span>
-            45
+              45
           </h5>
           <h4><a href="#">Event's name</a></h4>
-          <div class="calendario-card">
+          <div class="thumbnail calendario-card">
             <p class="mes centralizado">Junho</p>
             <p class="dia centralizado">07</p>
           </div>
@@ -72,15 +72,19 @@
 
 <hr>
 
-<div class="container">
+<div class="white"> 
+  <div class="container">
 
-  <!-- Footer -->
-  <footer>
-    <div class="row">
-      <div class="col-lg-12 centralizado">
-        <a href="index.html"><%= image_tag("logo_3.png",:size => "150x70", :class => "logo") %></a>
+    <!-- Footer -->
+    <footer>
+      <div class="row">
+        <div class="col-lg-12 centralizado">
+          <a href="index.html"><%= image_tag("logo_3.png",:size => "150x70", :class => "logo") %></a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+
+  </div>
 
 </div>
+  

@@ -4,9 +4,20 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-/*div.col-sm-4{
-    padding-left: 0px;
-}*/
+button.btn.btn-primary.search{
+    background-color: #1aa5cb;
+    margin-bottom: 26px;
+    border: 0;
+}
+
+h4 a, h5{
+    color: black;
+}
+
+h4 a:hover{
+    text-decoration: none;
+}
+
 .calendario-card{
     display: inline-block;
     width: 70px;
@@ -19,6 +30,7 @@
 
 .mes{
     font-size: 15px;
+    background-color: #eee;
 }
 
 .dia{
@@ -28,14 +40,11 @@
 
 .conteudo-card{
     display: inline-block;
+    margin-left: 10px;
 }
 
 div.thumbnail{
     padding: 0;
-}
-
-button.btn.btn-primary{
-    margin-bottom: 26px;
 }
 
 div.form-group.data{
@@ -84,6 +93,7 @@ div.container-fluid.categoria{
 .bootstrap-iso{
     margin-top: 20px;
     margin-bottom: 10px;
+    background-color: #eee !important;
 }
 
 body {
@@ -121,9 +131,15 @@ body {
     margin: 0;
 }
 
-.thumbnail .caption-full {
+div.thumbnail.calendario-card{
+    margin:0;
+    display: inline-block;
+}
+
+.thumbnail .caption-full{
     padding: 9px;
     color: #333;
+    
 }
 
 footer {
