@@ -1,7 +1,11 @@
 .show-img{
-	margin-top: 20px;
-	height: 400px;
+	height: 50%;
 	width: 100%;
+}
+
+.card-show{
+	padding: 20px;
+	margin-top: 20px;
 }
 
 .linha p{
@@ -20,9 +24,13 @@ h1.centralizado{
 	margin: 30px;
 }
 
+button.btn.btn-default.direita{
+	margin-top: 0;
+}
+
 div.container.show{
-	width: 60%;
-	font-weight: bold;
+	width: 70%;
+	font-size: 18px;
 }
 
 #map{
@@ -30,12 +38,17 @@ div.container.show{
 }
 
 .comentarios h2{
-	margin: 20px;
+	margin: 20px 0;
 }
-.comentarios p{
-	margin: 10px 50px;
+.comments{
+	margin: 20px 20px;
+	display: block;
 }
 
 .comentar{
-	margin: 20px;
+	margin: 20px 0;
+}
+
+.comentarios{
+	margin-bottom: 60px;
 }

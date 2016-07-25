@@ -47,7 +47,7 @@
 				<ul id="navbar-link-list" class="nav navbar-nav">
 					<li><a href="/login">Login</a></li>
 					<li><a href="/user/cadastro">Cadastro</a></li>
-					<li><button type="button" class="btn btn-default navbar-btn btn-event">Criar Evento!</button></li>
+					<li><button type="button" class="btn btn-default navbar-btn btn-event" data-toggle="modal" data-target="#myModal">Criar Evento!</button></li>
 				</ul>
 			</div>
 
@@ -60,6 +60,82 @@
 
 	<!-- /.container -->
 
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h2 class="modal-title centralizado" id="myModalLabel">Criar Evento</h2>
+	      </div>
+	      <div class="modal-body gray">
+
+	     <!-- CONTEUDO-->
+
+	      	<div class="container">
+
+						<form action="new_event_path" method="post">
+							
+							<div class="form-group">
+								Título:<br>
+							  <input type="text" name="title"><br>
+							</div>
+
+							<div class="form-group">
+								Data:<br>
+							  <input type="date" name="data"><br>
+							</div>
+
+							<div class="form-group">
+								Hora:<br>
+							  <input type="time" name="time"><br>
+							</div>
+
+							<div class="form-group">
+								Categoria:<br>
+							 	<select name="cars">
+							    <option value="artes">Artes</option>
+							    <option value="comidas">Comidas e Bebidas</option>
+							    <option value="cursos">Cursos</option>
+							    <option value="festas">Festas</option>
+							    <option value="networking">Networking</option>
+							    <option value="esporte">Esporte e Bem-Estar</option>
+							    <option value="musica">Música</option>
+							    <option value="compras">Compras</option>
+							  </select>
+							</div>
+
+							<div class="form-group">
+								Descrição:<br>
+							  <textarea name="description" rows="4"></textarea><br>
+							</div>
+
+							<div class="form-group">
+								Local:<br>
+							  <input type="text" name="local"><br>
+							</div>
+
+							<div class="form-group">
+								Imagem:<br>
+							  <input type="file" name="image" multiple><br>
+							</div>
+
+						</form>
+					</div>
+
+			<!--FIM DO CONTEUDO -->
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	        <button type="button" class="btn btn-primary">Criar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Fim Modal-->
+
+
 	<!-- Data Picker Scripts -->
 	<!--formden.js communicates with FormDen server to validate fields and submit via AJAX -->
 	<script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
@@ -67,8 +143,9 @@
 	<!-- Include jQuery -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-	<!-- Include Date Range Picker -->
+	<!-- Bootstrap Date-Picker Plugin -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_hWHB4fAKnZrvdvQSQnvLzvOaGMUQWmE&callback=initMap"></script>
 

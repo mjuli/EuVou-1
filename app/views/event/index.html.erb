@@ -2,18 +2,18 @@
 
 <div class="container">
   <!-- Data Picker -->
-  <div class="bootstrap-iso">
+  <div class="bootstrap-iso top-data">
     <div class="container-fluid categoria">
       <div class="row">
         <div class="col-md-6 col-sm-6 col-xs-12">
           <form action="https://formden.com/post/MlKtmY4x/" class="form-horizontal" method="post">
-            <div class="form-group data">
+            <div class="form-group">
               <div class="col-sm-4 agenda">
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+                  <input class="form-control" id="date" name="date" placeholder="dd/mm/yyyy" type="text"/>
                 </div>
               </div>
 
@@ -27,7 +27,7 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
         <!--Dropdown-->
           <div  class="dropdown direita">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Categorias
+            <button class="btn btn-default dropdown-toggle drop-category" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Categorias
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -65,7 +65,7 @@
     <footer>
       <div class="row">
         <div class="col-lg-12 centralizado">
-          <a href="index.html"><%= image_tag("logo_3.png",:size => "150x70", :class => "logo") %></a>
+          <a href="/event"><%= image_tag("logo_3.png",:size => "150x70", :class => "logo") %></a>
         </div>
       </div>
     </footer>

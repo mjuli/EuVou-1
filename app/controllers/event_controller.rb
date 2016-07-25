@@ -8,8 +8,9 @@ class EventController < ApplicationController
   end
 
   def show
-  	event = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
-    @evento = JSON.parse(event).symbolize_keys
+  	@evento = @events[@id.to_i - 1]
+    #event = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
+    #@evento = JSON.parse(event).symbolize_keys
     #@comentarios =
   end
 
@@ -80,7 +81,8 @@ class EventController < ApplicationController
     end
 
     def fake_event
-      @events = [{"title": "Evento_01", 
+      @events = [{ "id": 1,
+                "title": "Evento_01", 
                 "description": "Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gente num é. Suco de cevadiss deixa as pessoas mais interessantiss.",
                 "image": "https://static.cineclick.com.br/sites/adm/uploads/banco_imagens/31/602x0_1439644246.jpg",
                 "date": "10/10/2016",
@@ -88,7 +90,8 @@ class EventController < ApplicationController
                 "user_id": 1,
                 "category_id": 1,
                 "location": "Rua das Flores, 123"},
-                {"title": "Evento_02", 
+                { "id": 2,
+                "title": "Evento_02", 
                 "description": "Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gente num é. Suco de cevadiss deixa as pessoas mais interessantiss.",
                 "image": "https://static.cineclick.com.br/sites/adm/uploads/banco_imagens/31/602x0_1439644246.jpg",
                 "date": "01/10/2016",
@@ -96,7 +99,8 @@ class EventController < ApplicationController
                 "user_id": 1,
                 "category_id": 1,
                 "location": "Rua das Flores, 123"},
-                {"title": "Evento_03", 
+                { "id": 3,
+                "title": "Evento_03", 
                 "description": "Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gente num é. Suco de cevadiss deixa as pessoas mais interessantiss.",
                 "image": "http://larissacrivellarieventos.com/layout/uploads/images/musica.jpg",
                 "date": "11/10/2016",
@@ -104,7 +108,8 @@ class EventController < ApplicationController
                 "user_id": 1,
                 "category_id": 1,
                 "location": "Rua das Flores, 123"},
-                {"title": "Evento_04", 
+                {"id": 4,
+                "title": "Evento_04", 
                 "description": "Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gente num é. Suco de cevadiss deixa as pessoas mais interessantiss.",
                 "image": "https://static.cineclick.com.br/sites/adm/uploads/banco_imagens/31/602x0_1439644246.jpg",
                 "date": "09/10/2016",

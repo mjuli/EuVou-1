@@ -20,7 +20,16 @@
   width: 100%;
 }*/
 body{
-  background-color: #eee; 
+  background-color: #EFEFF2; 
+}
+
+.gray{
+  background-color: #EFEFF2; 
+}
+
+
+ul#navbar-link-list.nav.navbar-nav li a{
+  height: 55px;
 }
 
 .white{
@@ -32,7 +41,8 @@ body{
  font-weight: bold; 
 }
 
-button.btn.btn-default.navbar-btn.btn-event:hover{
+button.btn.btn-default.navbar-btn.btn-event:hover,
+button.btn.btn-default.navbar-btn.btn-event:focus{
   background-color: white;
   color: #57C3D9;
   border-color: #57C3D9;
