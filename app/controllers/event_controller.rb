@@ -3,15 +3,17 @@ class EventController < ApplicationController
   before_action :fake_event, only: [:show, :index]
 
   def index
-    events = RestClient.get 'http://jsonplaceholder.typicode.com/posts'
-  	@events = JSON.parse(events)
+    events = RestClient.get 'http://euvouapi.herokuapp.com/events/'
+    @events = JSON.parse(events).symbolize_keys[:data]
+    # puts ">>>>Debug do evento id<<<<"
+    # puts @events[1]["id"]
   end
 
   def show
   	#@evento = @events[@id.to_i]
     evento = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
     data = JSON.parse(evento).symbolize_keys[:data]["attributes"]
-    @evento = data.symbolize_keys
+    @evento = data.symbolize_keys.symbolize_keys
 
     #@evento = format(evento)
     
