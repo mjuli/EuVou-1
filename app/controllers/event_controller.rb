@@ -13,6 +13,7 @@ class EventController < ApplicationController
   	#@evento = @events[@id.to_i]
     evento = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
     @evento = JSON.parse(evento).symbolize_keys[:data].symbolize_keys
+    #@user = RestClient.get 'http://euvouapi.herokuapp.com/users/' + @evento[:relationships]["user"]["id"]
     #@evento = data.symbolize_keys.symbolize_keys
 
     #@evento = format(evento)
@@ -75,17 +76,9 @@ class EventController < ApplicationController
       @id = params[:id]
     end
 
-    def format(hash)
-      output = Hash.new
-      hash.each do |key, value|
-        output[key] = cleanup(value)
-      end
-      return output
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      # params.require(:event).permit(:title, :category_id, :description, :date, :images, :user_id, :local, address_attributes: [:id, :location, :lat, :lon])
+      params.require(:event).permit(:title, :category_id, :description, :date, :time, :image, :user_id, :local, address_attributes: [:id, :location, :lat, :lon])
     end
 
     def fake_event

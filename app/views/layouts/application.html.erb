@@ -56,6 +56,10 @@
 		<!-- /.container -->
 	</nav>
 
+	<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> centralizado bold notice"><%= value %></div>
+  <% end %>
+
 	<%= yield %>
 
 	<!-- /.container -->
@@ -74,7 +78,61 @@
 
 	      	<div class="container">
 
-						<form action="new_event_path" method="post">
+	      		<%= form_tag('/new_event_path', method: :post) do %>
+							<div class="form-group">
+								Título:<br>
+							  <input type="text" name="title"><br>
+							</div>
+
+							<div class="form-group">
+								Data:<br>
+								<!--<%= date_field(:user, :born_on) %>-->
+							  <input type="date" name="data"><br>
+							</div>
+
+							<div class="form-group">
+								Hora:<br>
+							  <input type="time" name="time"><br>
+							</div>
+
+							<div class="form-group">
+								Categoria:<br>
+							 	<select name="cars">
+							    <option value="artes">Artes</option>
+							    <option value="comidas">Comidas e Bebidas</option>
+							    <option value="cursos">Cursos</option>
+							    <option value="festas">Festas</option>
+							    <option value="networking">Networking</option>
+							    <option value="esporte">Esporte e Bem-Estar</option>
+							    <option value="musica">Música</option>
+							    <option value="compras">Compras</option>
+							  </select>
+							</div>
+
+							<div class="form-group">
+								Descrição:<br>
+							  <textarea name="description" rows="4"></textarea><br>
+							</div>
+
+							<div class="form-group">
+								Local:<br>
+							  <input type="text" name="local"><br>
+							</div>
+
+							<div class="form-group">
+								Imagem:<br>
+							  <input type="file" name="image" multiple><br>
+							</div>
+				
+							<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				        <button type="button" class="btn btn-primary">Criar</button>
+				      </div>
+
+	      		<% end %>
+							
+
+						<!-- <form action="new_event_path" method="post">
 							
 							<div class="form-group">
 								Título:<br>
@@ -120,15 +178,16 @@
 							  <input type="file" name="image" multiple><br>
 							</div>
 
-						</form>
+							<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				        <button type="button" class="btn btn-primary">Criar</button>
+				      </div>
+
+						</form> -->
 					</div>
 
 			<!--FIM DO CONTEUDO -->
 
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-	        <button type="button" class="btn btn-primary">Criar</button>
 	      </div>
 	    </div>
 	  </div>

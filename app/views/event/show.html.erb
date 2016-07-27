@@ -15,7 +15,7 @@
 				<p>Criado por: Ítalo</p>
 				<p class="direita">
 					<span class="glyphicon glyphicon-ok"></span>
-					45
+						<%= @evento[:attributes]["euvous-count"] %>
 				</p>
 			</div>
 			<h1 class="centralizado"><%= @evento[:attributes]["title"]%></h1>
@@ -28,7 +28,7 @@
 				<p><span class="bold">Hora: </span><%= Time.parse(@evento[:attributes]["time"]).strftime("%T")%></p>
 				<p><span class="bold">Descrição:</span></p>
 				<p class="descricao"><%= @evento[:attributes]["description"]%></p>
-				<p><span class="bold">Local: </span></p>
+				<p><span class="bold">Local: </span> <%= @evento[:relationships]["address"]["data"]["location"] %></p>
 				
 				<input type="hidden" id="lat" value=<%= @evento[:relationships]["address"]["data"]["lat"] %> >
 				<input type="hidden" id="lon" value=<%= @evento[:relationships]["address"]["data"]["lon"] %> >

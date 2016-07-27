@@ -9,19 +9,26 @@ class UserController < ApplicationController
   end
 
   def login
-    seesion[:current_user] = "token"
+    #seesion[:current_user] = "token"
   end
 
   def logoff
-    seesion[:current_user] = nil
+    #seesion[:current_user] = nil
   end
 
   def cadastro
-    RestClient.post ("https://euvouapi.herokuapp.com/users", {:user => params}.json)
   end
 
   def edit
-    RestClient.put ("https://euvouapi.herokuapp.com/users/" + session[:current_user], {:user => params}.json)
+    #RestClient.put ("https://euvouapi.herokuapp.com/users/" + session[:current_user], {:user => params}.json)
+  end
+
+  def create
+
+    #RestClient.post ("https://euvouapi.herokuapp.com/users", {:user => params}.json)
+    respond_to do |format|
+      format.html { redirect_to "/login", notice: 'Cadastro realizado com sucesso!' }
+    end
   end
 
 end
