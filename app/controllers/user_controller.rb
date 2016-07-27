@@ -9,11 +9,19 @@ class UserController < ApplicationController
   end
 
   def login
+    seesion[:current_user] = "token"
+  end
+
+  def logoff
+    seesion[:current_user] = nil
   end
 
   def cadastro
+    RestClient.post ("https://euvouapi.herokuapp.com/users", {:user => params}.json)
   end
 
   def edit
+    RestClient.put ("https://euvouapi.herokuapp.com/users/" + session[:current_user], {:user => params}.json)
   end
+
 end

@@ -5,8 +5,11 @@
 		<header>
 
 	 	
-		
-			<%= image_tag(@evento[:image], :class => "show-img") %>
+			<% if @evento[:image]["url"] != nil %>
+				<%= image_tag(@evento[:image]["url"], :class => "show-img", alt: "Imagem do evento") %>
+			<% else %>
+				<%= image_tag("http://larissacrivellarieventos.com/layout/uploads/images/musica.jpg", :class => "show-img", alt: "Imagem do evento") %>		
+			<% end %>
 			
 			<div class="linha">
 				<p>Criado por: Ítalo</p>
@@ -20,11 +23,12 @@
 		</header>
 
 		<div class="container show">
-			<p><span class="bold">Data: </span><%= Time.parse(@evento[:time]).strftime("%d/%m/%Y")%></p>
-			<p><span class="bold">Hora: </span><%= Time.parse(@evento[:time]).strftime("%T")%></p>
-			<p><span class="bold">Descrição:</span></p>
-			<p class="descricao"><%= @evento[:description]%></p>
-			<p><span class="bold">Local: </span></p>
+
+				<p><span class="bold">Data: </span><%= Time.parse(@evento[:time]).strftime("%d/%m/%Y")%></p>
+				<p><span class="bold">Hora: </span><%= Time.parse(@evento[:time]).strftime("%T")%></p>
+				<p><span class="bold">Descrição:</span></p>
+				<p class="descricao"><%= @evento[:description]%></p>
+				<p><span class="bold">Local: </span></p>
 
 			<div id="map"></div>
 			<hr>

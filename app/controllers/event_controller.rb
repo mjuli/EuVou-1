@@ -3,37 +3,32 @@ class EventController < ApplicationController
   before_action :fake_event, only: [:show, :index]
 
   def index
-    #events = RestClient.get 'http://jsonplaceholder.typicode.com/posts'
-  	#@events = JSON.parse(response).symbolize_keys
+    events = RestClient.get 'http://jsonplaceholder.typicode.com/posts'
+  	@events = JSON.parse(events)
   end
 
   def show
-  	@evento = @events[@id.to_i - 1]
-    #event = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
-    #@evento = JSON.parse(event).symbolize_keys
+  	#@evento = @events[@id.to_i]
+    evento = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
+    data = JSON.parse(evento).symbolize_keys[:data]["attributes"]
+    @evento = data.symbolize_keys
+
+    #@evento = format(evento)
+    
+    #@evento = JSON.parse(evento).symbolize_keys
     #@comentarios =
   end
 
   def new
+    if session[:current_user] == nil
+      respond_to do |format|
+        format.html { redirect_to "/login", notice: 'Usuário deve estar logado!' }
+      end
+    else
+      #RestClient.post ("https://euvouapi.herokuapp.com/events", {:event => params}.json)
+    end
   end
 
-  # POST /events
-  # POST /events.json
-  def create
-    # @event = Event.new(event_params)
-    # @event.user = current_user
-    # @event.lat, @event.lon = lat_lon(@event.address)
-    
-    # respond_to do |format|
-    #   if @event.save
-    #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
-    #     format.json { render :show, status: :created, location: @event }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @event.errors, status: :unprocessable_entity }
-    #   end
-    # end
-  end
 
   def edit
     event = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
@@ -75,13 +70,21 @@ class EventController < ApplicationController
       @id = params[:id]
     end
 
+    def format(hash)
+      output = Hash.new
+      hash.each do |key, value|
+        output[key] = cleanup(value)
+      end
+      return output
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       # params.require(:event).permit(:title, :category_id, :description, :date, :images, :user_id, :local, address_attributes: [:id, :location, :lat, :lon])
     end
 
     def fake_event
-      @events = [{ "id": 1,
+      @eventos = [{ "id": 1,
                 "title": "Evento_01", 
                 "description": "Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gente num é. Suco de cevadiss deixa as pessoas mais interessantiss.",
                 "image": "https://static.cineclick.com.br/sites/adm/uploads/banco_imagens/31/602x0_1439644246.jpg",
