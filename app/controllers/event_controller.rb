@@ -12,13 +12,16 @@ class EventController < ApplicationController
   def show
   	#@evento = @events[@id.to_i]
     evento = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
-    data = JSON.parse(evento).symbolize_keys[:data]["attributes"]
-    @evento = data.symbolize_keys.symbolize_keys
+    @evento = JSON.parse(evento).symbolize_keys[:data].symbolize_keys
+    #@evento = data.symbolize_keys.symbolize_keys
 
     #@evento = format(evento)
     
     #@evento = JSON.parse(evento).symbolize_keys
-    #@comentarios =
+    # #@comentarios =
+    # puts "------------------------------------------------------------------------------------"
+    # puts @evento[:relationships]["address"]["data"]["lat"].class
+    # puts "------------------------------------------------------------------------------------"
   end
 
   def new

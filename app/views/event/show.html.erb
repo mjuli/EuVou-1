@@ -5,8 +5,8 @@
 		<header>
 
 	 	
-			<% if @evento[:image]["url"] != nil %>
-				<%= image_tag(@evento[:image]["url"], :class => "show-img", alt: "Imagem do evento") %>
+			<% if @evento[:attributes]["image"]["url"] != nil %>
+				<%= image_tag(@evento[:attributes]["image"]["url"], :class => "show-img", alt: "Imagem do evento") %>
 			<% else %>
 				<%= image_tag("http://larissacrivellarieventos.com/layout/uploads/images/musica.jpg", :class => "show-img", alt: "Imagem do evento") %>		
 			<% end %>
@@ -18,21 +18,22 @@
 					45
 				</p>
 			</div>
-			<h1 class="centralizado"><%= @evento[:title]%></h1>
+			<h1 class="centralizado"><%= @evento[:attributes]["title"]%></h1>
 		
 		</header>
 
 		<div class="container show">
 
-				<p><span class="bold">Data: </span><%= Time.parse(@evento[:date]).strftime("%d/%m/%Y")%></p>
-				<p><span class="bold">Hora: </span><%= Time.parse(@evento[:time]).strftime("%T")%></p>
+				<p><span class="bold">Data: </span><%= Time.parse(@evento[:attributes]["date"]).strftime("%d/%m/%Y")%></p>
+				<p><span class="bold">Hora: </span><%= Time.parse(@evento[:attributes]["time"]).strftime("%T")%></p>
 				<p><span class="bold">Descrição:</span></p>
-				<p class="descricao"><%= @evento[:description]%></p>
+				<p class="descricao"><%= @evento[:attributes]["description"]%></p>
 				<p><span class="bold">Local: </span></p>
+				
+				<input type="hidden" id="lat" value=<%= @evento[:relationships]["address"]["data"]["lat"] %> >
+				<input type="hidden" id="lon" value=<%= @evento[:relationships]["address"]["data"]["lon"] %> >
 
-			<div id="map">
-				<span id="lat"><%=event[:relationships]["address"]["data"]["lat"] %></span>
-			</div>
+			<div id="map"></div>
 			<hr>
 			<div class="comentarios">
 				<h2>Comentários:</h2>
