@@ -1,6 +1,6 @@
 class EventController < ApplicationController
   before_action :set_event, only: [:show, :edit, :destroy]
-  before_action :fake_event, only: [:show, :index]
+  # before_action :fake_event, only: [:show, :index]
 
   def index
     events = RestClient.get 'http://euvouapi.herokuapp.com/events/'
@@ -10,34 +10,27 @@ class EventController < ApplicationController
   end
 
   def show
-  	#@evento = @events[@id.to_i]
     evento = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
     @evento = JSON.parse(evento).symbolize_keys[:data].symbolize_keys
     #@user = RestClient.get 'http://euvouapi.herokuapp.com/users/' + @evento[:relationships]["user"]["id"]
-    #@evento = data.symbolize_keys.symbolize_keys
-
-    #@evento = format(evento)
     
-    #@evento = JSON.parse(evento).symbolize_keys
-    # #@comentarios =
-    # puts "------------------------------------------------------------------------------------"
-    # puts @evento[:relationships]["address"]["data"]["lat"].class
-    # puts "------------------------------------------------------------------------------------"
   end
 
-  def new
+  def create
     if session[:current_user] == nil
       respond_to do |format|
         format.html { redirect_to "/login", notice: 'Usuário deve estar logado!' }
       end
+      
     else
+      #user_id = session[:current_user][id"]
       #RestClient.post ("https://euvouapi.herokuapp.com/events", {:event => params}.json)
     end
   end
 
 
   def edit
-    event = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
+    @event = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
   end
 
   # PATCH/PUT /events/1
@@ -69,8 +62,6 @@ class EventController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # Generates coordinates based on
   
     def set_event
       @id = params[:id]
@@ -81,46 +72,4 @@ class EventController < ApplicationController
       params.require(:event).permit(:title, :category_id, :description, :date, :time, :image, :user_id, :local, address_attributes: [:id, :location, :lat, :lon])
     end
 
-    def fake_event
-      @eventos = [{ "id": 1,
-                "title": "Evento_01", 
-                "description": "Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gente num é. Suco de cevadiss deixa as pessoas mais interessantiss.",
-                "image": "https://static.cineclick.com.br/sites/adm/uploads/banco_imagens/31/602x0_1439644246.jpg",
-                "date": "10/10/2016",
-                "time": "22:00",
-                "user_id": 1,
-                "category_id": 1,
-                "location": "Rua das Flores, 123"},
-                { "id": 2,
-                "title": "Evento_02", 
-                "description": "Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gente num é. Suco de cevadiss deixa as pessoas mais interessantiss.",
-                "image": "https://static.cineclick.com.br/sites/adm/uploads/banco_imagens/31/602x0_1439644246.jpg",
-                "date": "01/10/2016",
-                "time": "22:00",
-                "user_id": 1,
-                "category_id": 1,
-                "location": "Rua das Flores, 123"},
-                { "id": 3,
-                "title": "Evento_03", 
-                "description": "Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gente num é. Suco de cevadiss deixa as pessoas mais interessantiss.",
-                "image": "http://larissacrivellarieventos.com/layout/uploads/images/musica.jpg",
-                "date": "11/10/2016",
-                "time": "22:00",
-                "user_id": 1,
-                "category_id": 1,
-                "location": "Rua das Flores, 123"},
-                {"id": 4,
-                "title": "Evento_04", 
-                "description": "Mussum Ipsum, cacilds vidis litro abertis. Interagi no mé, cursus quis, vehicula ac nisi. Quem num gosta di mé, boa gente num é. Suco de cevadiss deixa as pessoas mais interessantiss.",
-                "image": "https://static.cineclick.com.br/sites/adm/uploads/banco_imagens/31/602x0_1439644246.jpg",
-                "date": "09/10/2016",
-                "time": "22:00",
-                "user_id": 1,
-                "category_id": 1,
-                "location": "Rua das Flores, 123"}]
-      @users = [{"name": "Luan1", "email": "luan1.goncbs@gmail.com", "password": "password1"}, 
-                {"name": "Luan2", "email": "luan1.goncbs@gmail.com", "password": "password1"}, 
-                {"name": "Luan3", "email": "luan1.goncbs@gmail.com", "password": "password1"}]
-      #@user = users[params[:id].to_i-1]
-    end
 end

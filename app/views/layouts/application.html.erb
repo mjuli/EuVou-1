@@ -57,7 +57,7 @@
 	</nav>
 
 	<% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %> centralizado bold notice"><%= value %></div>
+    <div class="alert alert-<%= key %> centralizado notice"><%= value %></div>
   <% end %>
 
 	<%= yield %>
@@ -78,112 +78,63 @@
 
 	      	<div class="container">
 
-	      		<%= form_tag('/new_event_path', method: :post) do %>
+	      		<%= form_tag('/event', method: :post) do %>
+						
 							<div class="form-group">
-								Título:<br>
-							  <input type="text" name="title"><br>
+	      				<%= label_tag :title, 'Nome:' %>
+	      				<br>
+        				<%= text_field_tag :title, params[:title] %>
+        			</div>
+
+        			<div class="form-group">
+	      				<%= label_tag :description, 'Descrição:' %>
+	      				<br>
+        				<%= text_area_tag :description, params[:description] %>
+        			</div>
+
+							<div class="form-group">
+								<%= label_tag :date, 'Data:' %>
+								<%= date_field_tag :date, params[:date] %>
 							</div>
 
 							<div class="form-group">
-								Data:<br>
-								<!--<%= date_field(:user, :born_on) %>-->
-							  <input type="date" name="data"><br>
+								<%= label_tag :time, 'Horário:' %>
+								<%= select_time (:time)%>
 							</div>
 
 							<div class="form-group">
-								Hora:<br>
-							  <input type="time" name="time"><br>
-							</div>
+								Categoria:
 
-							<div class="form-group">
-								Categoria:<br>
-							 	<select name="cars">
-							    <option value="artes">Artes</option>
-							    <option value="comidas">Comidas e Bebidas</option>
-							    <option value="cursos">Cursos</option>
-							    <option value="festas">Festas</option>
-							    <option value="networking">Networking</option>
-							    <option value="esporte">Esporte e Bem-Estar</option>
-							    <option value="musica">Música</option>
-							    <option value="compras">Compras</option>
+							 	<select name="category_id">
+							    <option value="1">Artes</option>
+							    <option value="2">Comidas e Bebidas</option>
+							    <option value="3">Cursos</option>
+							    <option value="4">Festas</option>
+							    <option value="5">Networking</option>
+							    <option value="6">Esporte e Bem-Estar</option>
+							    <option value="7">Música</option>
+							    <option value="8">Compras</option>
 							  </select>
 							</div>
 
 							<div class="form-group">
-								Descrição:<br>
-							  <textarea name="description" rows="4"></textarea><br>
+								<%= label_tag :local, 'Local:' %>
+	      				<br>
+        				<%= text_field_tag :local, params[:local] %>
 							</div>
 
 							<div class="form-group">
-								Local:<br>
-							  <input type="text" name="local"><br>
-							</div>
-
-							<div class="form-group">
-								Imagem:<br>
-							  <input type="file" name="image" multiple><br>
+								<%= label_tag :image, 'Imagem:' %>
+	      				<br>
+        				<%= text_field_tag :image, params[:image] %>
 							</div>
 				
 							<div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				        <button type="button" class="btn btn-primary">Criar</button>
+				        <button type="button" class="btn btn-default cancelar" data-dismiss="modal">Cancelar</button>
+				        <%= submit_tag 'Criar', class: 'btn btn-primary' %>
 				      </div>
 
 	      		<% end %>
-							
-
-						<!-- <form action="new_event_path" method="post">
-							
-							<div class="form-group">
-								Título:<br>
-							  <input type="text" name="title"><br>
-							</div>
-
-							<div class="form-group">
-								Data:<br>
-							  <input type="date" name="data"><br>
-							</div>
-
-							<div class="form-group">
-								Hora:<br>
-							  <input type="time" name="time"><br>
-							</div>
-
-							<div class="form-group">
-								Categoria:<br>
-							 	<select name="cars">
-							    <option value="artes">Artes</option>
-							    <option value="comidas">Comidas e Bebidas</option>
-							    <option value="cursos">Cursos</option>
-							    <option value="festas">Festas</option>
-							    <option value="networking">Networking</option>
-							    <option value="esporte">Esporte e Bem-Estar</option>
-							    <option value="musica">Música</option>
-							    <option value="compras">Compras</option>
-							  </select>
-							</div>
-
-							<div class="form-group">
-								Descrição:<br>
-							  <textarea name="description" rows="4"></textarea><br>
-							</div>
-
-							<div class="form-group">
-								Local:<br>
-							  <input type="text" name="local"><br>
-							</div>
-
-							<div class="form-group">
-								Imagem:<br>
-							  <input type="file" name="image" multiple><br>
-							</div>
-
-							<div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				        <button type="button" class="btn btn-primary">Criar</button>
-				      </div>
-
-						</form> -->
 					</div>
 
 			<!--FIM DO CONTEUDO -->
