@@ -1,6 +1,7 @@
 <div class="login-cadastro">
   <div class="wrapper">
-    <form class="login">
+    <%= form_tag '/user/create', :method => :post, :class => 'login' do %>
+
       <p class="title">Cadastrar-se</p>
       <input type="text" placeholder="Nome" autofocus/>
       <i class="fa fa-user"></i>
@@ -13,7 +14,8 @@
         <i class="spinner"></i>
         <span class="state">Cadastrar!</span>
       </button>
-    </form>
+
+    <% end %>
     <footer><a target="blank" href="http://localhost:3000">euvouweb.com</a></footer>
     </p>
   </div>
