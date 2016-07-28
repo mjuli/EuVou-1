@@ -17,11 +17,13 @@ class EventController < ApplicationController
   end
 
   def create
+    @time = params[:time]["(4i)"] + ":" + params[:time]["(5i)"] + ":" + params[:time]["(6i)"]
+    
     if session[:current_user] == nil
       respond_to do |format|
         format.html { redirect_to "/login", notice: 'Usuário deve estar logado!' }
       end
-      
+
     else
       #user_id = session[:current_user][id"]
       #RestClient.post ("https://euvouapi.herokuapp.com/events", {:event => params}.json)

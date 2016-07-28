@@ -78,17 +78,15 @@
 
 	      	<div class="container">
 
-	      		<%= form_tag('/event', method: :post) do %>
+	      		<%= form_tag('/event', method: :post, authenticity_token: "7dlUogMBOIbXg2q7S2fU0aa5v42M86yimqw2IkFqNcxfuFVB23Dpelt59ZkFAfXIH5rtC+K0k5FicLuaBkzDzg==") do %>
 						
 							<div class="form-group">
 	      				<%= label_tag :title, 'Nome:' %>
-	      				<br>
         				<%= text_field_tag :title, params[:title] %>
         			</div>
 
         			<div class="form-group">
 	      				<%= label_tag :description, 'Descrição:' %>
-	      				<br>
         				<%= text_area_tag :description, params[:description] %>
         			</div>
 
@@ -99,12 +97,11 @@
 
 							<div class="form-group">
 								<%= label_tag :time, 'Horário:' %>
-								<%= select_time (:time)%>
+								<%= time_select :time, params[:time], include_seconds: true %>
 							</div>
 
 							<div class="form-group">
-								Categoria:
-
+								<%= label_tag :category_id, 'Categoria:' %>
 							 	<select name="category_id">
 							    <option value="1">Artes</option>
 							    <option value="2">Comidas e Bebidas</option>
@@ -119,13 +116,11 @@
 
 							<div class="form-group">
 								<%= label_tag :local, 'Local:' %>
-	      				<br>
         				<%= text_field_tag :local, params[:local] %>
 							</div>
 
 							<div class="form-group">
 								<%= label_tag :image, 'Imagem:' %>
-	      				<br>
         				<%= text_field_tag :image, params[:image] %>
 							</div>
 				

@@ -19,6 +19,17 @@
 /*.pesquisa{
   width: 100%;
 }*/
+input#title,
+textarea#description,
+input#date,
+input#local,
+input#image{
+  width: 50%; 
+  display: inline-block;
+  right: 100px;
+  position: absolute;
+}
+  
 
 button.btn.btn-default.cancelar{
   background-color: #428bca;
