@@ -1,20 +1,22 @@
 <div class="login-cadastro">
   <div class="wrapper">
-    <form class="login">
+    <form class="login" action="users" method="POST">
       <p class="title">Cadastrar-se</p>
-      <input type="text" placeholder="Nome" autofocus/>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="text" name="nome" placeholder="Nome" autofocus/>
       <i class="fa fa-user"></i>
-      <input type="text" placeholder="E-mail" autofocus/>
+      <input type="text" name="email" placeholder="E-mail" autofocus/>
       <i class="fa fa-user"></i>
-      <input type="password" placeholder="Senha" />
+      <input type="password" name="senha" placeholder="Senha" />
       <i class="fa fa-key"></i>
-      <input type="password" placeholder="Confirmar Senha" />
-      <button>
+      <input type="password" name="senhaconfirm" placeholder="Confirmar Senha" />
+      <i class="fa fa-key"></i>
+      <button type="submit">
         <i class="spinner"></i>
         <span class="state">Cadastrar!</span>
       </button>
     </form>
-    <footer><a target="blank" href="http://localhost:3000">euvouweb.com</a></footer>
+    <footer><a target="blank" href="http://localhost:3000/">euvouweb.com</a></footer>
     </p>
   </div>
 </div>

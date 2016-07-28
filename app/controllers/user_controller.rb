@@ -1,19 +1,53 @@
 class UserController < ApplicationController
+  
+  #GET
   def show
-  	events = [{title: :Evento1, description: :Testestestestes, image: "https://static.cineclick.com.br/sites/adm/uploads/banco_imagens/31/602x0_1439644246.jpg"},
-  					 {title: :Evento2, description: :Testestesteste2, image: "https://static.cineclick.com.br/sites/adm/uploads/banco_imagens/31/602x0_1439644246.jpg"}]
-  	users = [{name: :Luan1, email: "luan1.goncbs@gmail.com", password: :password1, events: events}, 
-  					 {name: :Luan2, email: "luan2.goncbs@gmail.com", password: :password2, events: events}, 
-  					 {name: :Luan3, email: "luan3.goncbs@gmail.com", password: :password3, events: events}]
-  	@user = users[params[:id].to_i-1]
+  	user = RestClient.get 'https://euvouapi.herokuapp.com/users/' + params[:id]
+    @user = JSON.parse(user).symbolize_keys
+    @user = @user[:data]["attributes"]
   end
 
+  #GET
   def login
   end
 
-  def cadastro
+  #POST
+  def singin
+    session[:current_user] = RestClient.post 'http://euvouapi.herokuapp.com/oauth/token', {"email" => params["email"], "password" => params["senha"], "grant_type" => "password"}
+    respond_to do |format|
+      format.html { redirect_to '/event', notice: 'Seja bem vindo' }
+    end
   end
 
+  #GET ou POST
+  def singout
+    
+  end
+
+  #GET
+  def cadastro
+  end
+  
+  #POST
+  def create
+    begin
+      RestClient.post 'euvouapi.herokuapp.com/registrations', {"user" => {"name" => params["nome"], "email" => params["email"], "password" => params["senha"], "password_confirmation" => params["senhaconfirm"]}}
+    rescue => e
+      response = e.response
+      respond_to do |format|
+        format.html { redirect_to login_url, notice: 'Oops! Algum erro ocorreu. Tente novamente' }
+      end
+      return
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to login_url, notice: 'Usuário criado com sucesso' }
+    end
+    
+  end
+
+  #PUT
   def edit
+
   end
 end

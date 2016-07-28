@@ -3,17 +3,17 @@
 	<header>
 		
 		<div class="container">
-			<h1 class="centralizado"><%= @user[:name] %></h1>
+			<h1 class="centralizado"><%= @user["name"] %></h1>
 		</div>
 		
 	</header>
 	<div class="centralizado">
-		<p><%= @user[:email] %></p>
+		<p><%= @user["email"] %></p>
 	</div>
 
 	<div class="container show">
-		<h3>Eventos criados por <%= @user[:name] %></h3><br>
-		<%= render partial: "event/event", collection: @user[:events] %>
+		<h3>Eventos criados por <%= @user["name"] %></h3><br>
+		<%= render partial: "event/event", collection: @user["event_show"] %>
 	</div>
 	    
 	<div class="container">
