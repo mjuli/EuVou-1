@@ -1,5 +1,5 @@
 class EventController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :destroy]
+  #before_action :set_event, only: [:show, :edit, :destroy]
   # before_action :fake_event, only: [:show, :index]
 
   def index
@@ -20,13 +20,37 @@ class EventController < ApplicationController
     time = params[:time]["(4i)"] + ":" + params[:time]["(5i)"] + ":" + params[:time]["(6i)"]
     
     if session[:current_user] == nil
+      
       respond_to do |format|
         format.html { redirect_to "/login", notice: 'Usuário deve estar logado!' }
       end
-
+    
     else
-      #user_id = session[:current_user][id"]
-      #RestClient.post ("https://euvouapi.herokuapp.com/events", {:event => params}.json)
+    
+      response = RestClient.get 'http://euvouapi.herokuapp.com/oauth/token/info', {:Authorization => 'Bearer ' + session[:current_user]["access_token"]}
+      user_info = JSON.parse(response).symbolize_keys
+      user_id = user_info[:resource_owner_id]
+      
+      RestClient.post 'https://euvouapi.herokuapp.com/events', 
+      {"event" => {
+        "title" => params[:title], 
+        "description" => params[:description], 
+        "date" => params[:date], 
+        "time" => time, 
+        "user_id" => user_id, 
+        "category_id" => params[:category_id].to_i, 
+        "address_attributes"  => {
+          "lat" => "adfasdf", 
+          "lon" => "asdfasdf", 
+          "location" => "asdfasdf"}
+         }
+      }, 
+      {:Authorization => 'Bearer ' + session[:current_user]["access_token"]}
+      
+      respond_to do |format|
+        format.html { redirect_to "/event", notice: 'Evento Criado com Sucesso!' }
+      end
+      
     end
   end
 

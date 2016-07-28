@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :event
+  resources :event, except: [:new, :edit]
 
 
   get '/users/:id' => "user#show"
