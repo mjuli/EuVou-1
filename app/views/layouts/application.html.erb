@@ -45,8 +45,12 @@
 					</form>
 				</ul>
 				<ul id="navbar-link-list" class="nav navbar-nav">
-					<li><a href="/login">Login</a></li>
-					<li><a href="/user/cadastro">Cadastro</a></li>
+					<% if session[:current_user] %>
+						<li><a href="/singout">Sair</a></li>
+					<% else %>
+						<li><a href="/login">Login</a></li>
+						<li><a href="/user/cadastro">Cadastro</a></li>
+					<% end %>
 					<li><button type="button" class="btn btn-default navbar-btn btn-event" data-toggle="modal" data-target="#myModal">Criar Evento!</button></li>
 				</ul>
 			</div>
@@ -78,8 +82,9 @@
 
 	      	<div class="container">
 
-	      		<%= form_tag('/event', method: :post, authenticity_token: "7dlUogMBOIbXg2q7S2fU0aa5v42M86yimqw2IkFqNcxfuFVB23Dpelt59ZkFAfXIH5rtC+K0k5FicLuaBkzDzg==") do %>
-						
+	      		<%= form_tag 'event', method: :post do %>
+							
+							<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 							<div class="form-group">
 	      				<%= label_tag :title, 'Nome:' %>
         				<%= text_field_tag :title, params[:title] %>

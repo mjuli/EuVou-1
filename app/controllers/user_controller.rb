@@ -18,7 +18,8 @@ class UserController < ApplicationController
 
   #POST
   def singin
-    session[:current_user] = RestClient.post 'http://euvouapi.herokuapp.com/oauth/token', {"email" => params["email"], "password" => params["senha"], "grant_type" => "password"}
+    token = RestClient.post 'http://euvouapi.herokuapp.com/oauth/token', {"email" => params["email"], "password" => params["senha"], "grant_type" => "password"}
+    session[:current_user] = JSON.parse(token).symbolize_keys
     respond_to do |format|
       format.html { redirect_to '/event', notice: 'Seja bem vindo' }
     end
@@ -26,7 +27,10 @@ class UserController < ApplicationController
 
   #GET ou POST
   def singout
-    
+    session[:current_user] = nil
+    respond_to do |format|
+      format.html { redirect_to '/event', notice: 'Até mais!!' }
+    end
   end
 
   #GET
