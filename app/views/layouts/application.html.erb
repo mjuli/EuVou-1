@@ -88,7 +88,7 @@
 							<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 							<div class="form-group">
 	      				<%= label_tag :title, 'Nome:' %>
-        				<%= text_field_tag :title, params[:title] %>
+        				<%= text_field_tag :title, params[:title], :required => true %>
         			</div>
 
         			<div class="form-group">
@@ -103,7 +103,7 @@
 
 							<div class="form-group">
 								<%= label_tag :time, 'Horário:' %>
-								<%= time_select :time, params[:time], include_seconds: true %>
+								<%= time_select :time, params[:time], include_seconds: true, :required => true %>
 							</div>
 
 							<div class="form-group">
