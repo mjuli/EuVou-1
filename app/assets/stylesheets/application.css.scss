@@ -19,6 +19,36 @@
 /*.pesquisa{
   width: 100%;
 }*/
+input#title,
+textarea#description,
+input#date,
+input#local,
+input#image{
+  width: 50%; 
+  display: inline-block;
+  right: 100px;
+  position: absolute;
+}
+  
+
+button.btn.btn-default.cancelar{
+  background-color: #428bca;
+  color: #fff;
+  border-color: #357ebd;
+}
+
+input.btn.btn-primary{
+  width: 80px !important;
+}
+
+div.alert.alert-notice.centralizado.notice{
+  padding: 25px !important;
+  font-size: 20px;
+  margin-bottom: 0px !important;
+  background-color: #042844;
+  color: white;
+}
+
 body{
   background-color: #EFEFF2; 
 }

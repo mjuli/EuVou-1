@@ -1,20 +1,27 @@
-<div class="col-sm-4 col-lg-4 col-md-4 card-index">
-  <div class="thumbnail">
-    <a href="/event/<%=event[:id]%>"><%= image_tag(event[:image], :class => "img-index") %></a>
-    <div class="caption info">
-      <h5 class="pull-right"> 
-        <span class="glyphicon glyphicon-ok"></span>
-          45
-      </h5>
-      <h4><a href="/event/<%=event[:id]%>"><%= event[:title] %></a></h4>
-      <div class="thumbnail calendario-card">
-        <p class="mes centralizado">Junho</p>
-        <p class="dia centralizado">07</p>
-      </div>
-      <div class="conteudo-card">
-        <p><span class="bold">Local: </span><%=event[:location] %></p>
-        <p><span class="bold">Hora:  </span><%=event[:time] %></p>
+  <% event = event.symbolize_keys %>
+  <div class="col-sm-4 col-lg-4 col-md-4 card-index">
+    <div class="thumbnail">
+      <a href="/event/<%=event[:id]%>">
+        <% if event[:attributes]["image"]["url"] != nil %>
+          <%= image_tag(event[:attributes]["image"]["url"], :class => "img-index", alt: "Imagem do evento") %>
+        <% else %>
+          <%= image_tag("http://larissacrivellarieventos.com/layout/uploads/images/musica.jpg", :class => "img-index", alt: "Imagem do evento") %>   
+        <% end %>
+      </a>
+      <div class="caption info">
+        <h5 class="pull-right"> 
+          <span class="glyphicon glyphicon-ok"></span>
+            <%= event[:attributes]["euvous-count"] %>
+        </h5>
+        <h4><a href="/event/<%=event[:id]%>"><%= event[:attributes]["title"] %></a></h4>
+        <div class="thumbnail calendario-card">
+          <p class="mes centralizado"><%= Time.parse(event[:attributes]["date"]).strftime("%^b")%> </p>
+          <p class="dia centralizado"><%= Time.parse(event[:attributes]["date"]).strftime("%d")%></p>
+        </div>
+        <div class="conteudo-card">
+          <p><span class="bold">Local: </span><%=event[:relationships]["address"]["data"]["location"] %></p>
+          <p><span class="bold">Hora:  </span><%= Time.parse(event[:attributes]["time"]).strftime("%T") %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
