@@ -9,6 +9,11 @@ class UserController < ApplicationController
 
   #GET
   def login
+    #seesion[:current_user] = "token"
+  end
+
+  def logoff
+    #seesion[:current_user] = nil
   end
 
   #POST
@@ -48,6 +53,7 @@ class UserController < ApplicationController
 
   #PUT
   def edit
-
+    
   end
+
 end
