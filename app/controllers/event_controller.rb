@@ -17,7 +17,7 @@ class EventController < ApplicationController
   end
 
   def create
-    @time = params[:time]["(4i)"] + ":" + params[:time]["(5i)"] + ":" + params[:time]["(6i)"]
+    time = params[:time]["(4i)"] + ":" + params[:time]["(5i)"] + ":" + params[:time]["(6i)"]
     
     if session[:current_user] == nil
       respond_to do |format|
@@ -64,6 +64,24 @@ class EventController < ApplicationController
   end
 
   private
+    def lat_lon(address)
+      # Escape any non_ASCII characters and convert the string into a URI object.
+      encoded_url = URI.escape(
+        'https://maps.googleapis.com/maps/api/geocode/json?address=' + address
+      )
+      url = URI.parse((encoded_url))
+
+      # Make the request to retrieve the JSON string
+      response = open(url).read
+
+      # Convert the JSON string into a Hash object
+      result = JSON.parse(response)
+
+      # Extract the latitude and longitude and return them
+      lat = result['results'][0]['geometry']['location']['lat']
+      lon = result['results'][0]['geometry']['location']['lng']
+      return lat, lon
+    end
   
     def set_event
       @id = params[:id]

@@ -16,3 +16,4 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+MarkerClusterer.IMAGE_PATH = '/assets/markerclustererplus/images/m'
