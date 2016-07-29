@@ -35,9 +35,9 @@ class EventController < ApplicationController
       {"event" => {
         "title" => params[:title], 
         "description" => params[:description], 
-        "date" => params[:date_field], 
+        "date" => params[:date], 
         "time" => time, 
-        "user_id" => user_id, 
+        "user_id" => user_id,
         "category_id" => params[:category_id].to_i, 
         "address_attributes"  => {
           "lat" => "-5.809956", 

@@ -21,15 +21,14 @@
 }*/
 input#title,
 textarea#description,
-input#date_field,
 input#local,
-input#image{
+input#image,
+input#date.date_field{
   width: 45%; 
   display: inline-block;
   right: 100px;
   position: absolute;
 }
-  
 
 button.btn.btn-default.cancelar{
   background-color: #428bca;
