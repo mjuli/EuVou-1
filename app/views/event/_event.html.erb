@@ -15,8 +15,10 @@
         </h5>
         <h4><a href="/event/<%=event[:id]%>"><%= event[:attributes]["title"] %></a></h4>
         <div class="thumbnail calendario-card">
-            <p class="mes centralizado"><%= Date.parse(event[:attributes]["date"]).strftime("%^b")%> </p>
-            <p class="dia centralizado"><%= Date.parse(event[:attributes]["date"]).strftime("%d")%></p>
+            <% if event[:attributes]["date"] != nil %>
+              <p class="mes centralizado"><%= Date.parse(event[:attributes]["date"]).strftime("%^b")%> </p>
+              <p class="dia centralizado"><%= Date.parse(event[:attributes]["date"]).strftime("%d")%></p>
+            <% end %>
         </div>
         <div class="conteudo-card">
           <p><span class="bold">Local: </span><%=event[:relationships]["address"]["data"]["location"] %></p>

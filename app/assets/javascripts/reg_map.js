@@ -64,5 +64,7 @@ $(document).ready(function() {
     
 		marker.setVisible(true);
 
+    var mc = new MarkerClusterer(map, marker);
+
   });
 });

@@ -1,5 +1,5 @@
 class EventController < ApplicationController
-  #before_action :set_event, only: [:show, :edit, :destroy]
+  before_action :set_event, only: [:show, :edit, :destroy]
   # before_action :fake_event, only: [:show, :index]
 
   def index
@@ -10,14 +10,14 @@ class EventController < ApplicationController
   end
 
   def show
-    evento = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id.to_s
+    evento = RestClient.get 'http://euvouapi.herokuapp.com/events/' + @id
     @evento = JSON.parse(evento).symbolize_keys[:data].symbolize_keys
-    #@user = RestClient.get 'http://euvouapi.herokuapp.com/users/' + @evento[:relationships]["user"]["id"]
-    
+    puts @evento
+    @user = JSON.parse(RestClient.get 'http://euvouapi.herokuapp.com/users/' + @evento[:relationships]["user"]["data"]["id"])
   end
 
   def create
-    time = params[:time]["(4i)"] + ":" + params[:time]["(5i)"] + ":" + params[:time]["(6i)"]
+    time = params[:time]["(4i)"] + ":" + params[:time]["(5i)"] + ":00"
     
     if session[:current_user] == nil
       
@@ -35,14 +35,14 @@ class EventController < ApplicationController
       {"event" => {
         "title" => params[:title], 
         "description" => params[:description], 
-        "date" => params[:date], 
+        "date" => params[:date_field], 
         "time" => time, 
         "user_id" => user_id, 
         "category_id" => params[:category_id].to_i, 
         "address_attributes"  => {
-          "lat" => "adfasdf", 
-          "lon" => "asdfasdf", 
-          "location" => "asdfasdf"}
+          "lat" => "-5.809956", 
+          "lon" => "-35.206202", 
+          "location" => "Midway Mall"}
          }
       }, 
       {:Authorization => 'Bearer ' + session[:current_user]["access_token"]}

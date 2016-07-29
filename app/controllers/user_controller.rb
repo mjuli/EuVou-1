@@ -18,6 +18,17 @@ class UserController < ApplicationController
 
   #POST
   def singin
+    begin
+      RestClient.post 'http://euvouapi.herokuapp.com/oauth/token', {"email" => params["email"], "password" => params["senha"], "grant_type" => "password"}
+    rescue => e
+    
+      response = e.response
+      respond_to do |format|
+        format.html { redirect_to login_url, notice: 'E-mail ou senha inválidos' }
+      end
+      return
+    end
+
     token = RestClient.post 'http://euvouapi.herokuapp.com/oauth/token', {"email" => params["email"], "password" => params["senha"], "grant_type" => "password"}
     session[:current_user] = JSON.parse(token).symbolize_keys
     respond_to do |format|
